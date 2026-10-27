@@ -1,0 +1,47 @@
+{
+ "tag": "p3_nostream",
+ "pages": 3,
+ "stream": false,
+ "max_new_tokens": 24576,
+ "gpu": "NVIDIA GB10",
+ "torch": "2.13.0+cu130",
+ "dtype": "bfloat16",
+ "attn_implementation": "eager",
+ "finish": "stop",
+ "output_tokens": 1669,
+ "num_pages_out": 3,
+ "expected_pages": 3,
+ "prompt_tokens": 827,
+ "total_wall_s": 42.85,
+ "infer_internal_time_s": 42.75,
+ "internal_prefill_to_first_token_s": 1.55,
+ "preprocess_s": 0.053,
+ "sam_s": 0.434,
+ "clip_s": 0.042,
+ "prefill_forward_s": 1.545,
+ "decode_forward_s": 38.18,
+ "decode_wall_s": 41.2,
+ "tok_per_s_total": 38.95,
+ "tok_per_s_decode_wall": 40.51,
+ "ms_per_token_forward_mean": 22.87,
+ "ms_per_token_wall_mean": 24.69,
+ "ms_per_token_forward_quartiles": [
+  22.46,
+  22.64,
+  22.94,
+  23.46
+ ],
+ "ms_per_token_wall_quartiles": [
+  24.27,
+  24.45,
+  24.75,
+  25.27
+ ],
+ "peak_mem_gb": 6.81,
+ "fallback_lines": 13,
+ "fallback_sample": [
+  "/home/ifioravanti/venvs/uocr/lib/python3.10/site-packages/triton/language/core.py:2284: UserWarning: tl.make_block_ptr is deprecated. Use TensorDescriptor or tl.make_tensor_descriptor instead.",
+  "[DASH] Triton block-sparse path active (S=827, block_size=32, remote_topk=12, local_window=128)"
+ ],
+ "cpu_params": 0
+}

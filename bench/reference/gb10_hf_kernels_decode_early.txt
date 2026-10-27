@@ -1,0 +1,28 @@
+top CUDA kernels over 60 decode steps (device_time_total us, count, name)
+    401224  21239 aten::matmul
+    377857  19079 aten::linear
+    377857  19079 aten::mm
+    208788  16260 std::enable_if<!(false), void>::type internal::gemvx::kernel<int, int, __nv_bfloat16, __nv_bfloat16, __nv_bflo
+    167522   2159 std::enable_if<!(false), void>::type internal::gemvx::kernel<int, int, __nv_bfloat16, __nv_bfloat16, __nv_bflo
+    104768  31628 aten::copy_
+     93866  53277 aten::to
+     93866  23817 aten::_to_copy
+     84118  14339 void at::native::unrolled_elementwise_kernel<at::native::direct_copy_kernel_cuda(at::TensorIteratorBase&)::{la
+     63593   9300 aten::cat
+     48569   1440 void at::native::(anonymous namespace)::CatArrayBatchedCopy_vectorized<at::native::(anonymous namespace)::Opaq
+     35307  26340 aten::mul
+     31357    720 _Entmax15
+     23368   2160 aten::bmm
+     17507   5640 aten::sum
+     15357   1440 std::enable_if<!(false), void>::type internal::gemvx::kernel<int, int, float, float, float, float, false, true
+     13051  11580 aten::add
+     12556  10080 aten::nan_to_num
+     11502   8472 Memcpy DtoD (Device -> Device)
+     11087   9060 void at::native::vectorized_elementwise_kernel<4, at::native::BinaryFunctor<c10::BFloat16, c10::BFloat16, c10:
+     10493   6480 void at::native::elementwise_kernel<128, 2, at::native::gpu_kernel_impl_nocast<at::native::BinaryFunctor<float
+      9818   1380 aten::sort
+      9599   8652 aten::fill_
+      9417   1380 aten::topk
+      9365   8640 aten::clamp
+
+self device time total 1581640 us; triton-named kernels 0 us; cuda kernel names containing 'triton': []

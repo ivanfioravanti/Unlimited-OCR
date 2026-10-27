@@ -1,0 +1,28 @@
+top CUDA kernels over 60 decode steps (device_time_total us, count, name)
+    567954  21239 aten::matmul
+    391346  19079 aten::linear
+    391346  19079 aten::mm
+    291165  31569 aten::copy_
+    274848  53277 aten::to
+    274848  23817 aten::_to_copy
+    264592  14339 void at::native::unrolled_elementwise_kernel<at::native::direct_copy_kernel_cuda(at::TensorIteratorBase&)::{la
+    217217  16260 std::enable_if<!(false), void>::type internal::gemvx::kernel<int, int, __nv_bfloat16, __nv_bfloat16, __nv_bflo
+    176608   2160 aten::bmm
+    172518   2159 std::enable_if<!(false), void>::type internal::gemvx::kernel<int, int, __nv_bfloat16, __nv_bfloat16, __nv_bflo
+    168027   9300 aten::cat
+    142115   1440 void at::native::(anonymous namespace)::CatArrayBatchedCopy_vectorized<at::native::(anonymous namespace)::Opaq
+    106845    720 void gemv2T_kernel_val<int, int, float, float, float, float, 128, 16, 2, 2, false, false, cublasGemvParamsEx<i
+     68458    720 std::enable_if<!(false), void>::type internal::gemvx::kernel<int, int, float, float, float, float, false, true
+     44593  26340 aten::mul
+     33401    720 _Entmax15
+     21139   5640 aten::sum
+     18408   6480 void at::native::elementwise_kernel<128, 2, at::native::gpu_kernel_impl_nocast<at::native::BinaryFunctor<float
+     17016   8472 Memcpy DtoD (Device -> Device)
+     16649   1392 aten::pad
+     16649   1392 aten::constant_pad_nd
+     15439    720 void at::native::(anonymous namespace)::CatArrayBatchedCopy_vectorized<at::native::(anonymous namespace)::Opaq
+     14497  10080 aten::nan_to_num
+     14334  11580 aten::add
+     13359   8652 aten::fill_
+
+self device time total 2553779 us; triton-named kernels 0 us; cuda kernel names containing 'triton': []

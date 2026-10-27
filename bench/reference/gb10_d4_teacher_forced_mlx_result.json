@@ -1,0 +1,499 @@
+{
+ "tag": "d4_teacher_mlx",
+ "pages": 6,
+ "stream": false,
+ "max_new_tokens": 24576,
+ "gpu": "NVIDIA GB10",
+ "torch": "2.13.0+cu130",
+ "dtype": "bfloat16",
+ "attn_implementation": "eager",
+ "teacher_roundtrip_ok": true,
+ "teacher_tokens": 4567,
+ "agree": 4514,
+ "agree_pct": 98.84,
+ "disagree": 53,
+ "disagree_margin_lt_0_5": 29,
+ "disagree_margin_lt_1": 38,
+ "disagree_margin_ge_2": 2,
+ "disagree_margin_median": 0.25,
+ "disagree_margin_max": 7.125,
+ "all_disagreements": [
+  {
+   "pos": 7,
+   "ctx": "<PAGE><BLOCK>header[117, ",
+   "ctx_page": 1,
+   "forced": "38",
+   "argmax": "39",
+   "margin": 0.0,
+   "forced_gap": 0.125
+  },
+  {
+   "pos": 13,
+   "ctx": ", 38, 396, ",
+   "ctx_page": 1,
+   "forced": "73",
+   "argmax": "74",
+   "margin": 0.0,
+   "forced_gap": 0.0
+  },
+  {
+   "pos": 60,
+   "ctx": "text[200, 162, ",
+   "ctx_page": 1,
+   "forced": "797",
+   "argmax": "796",
+   "margin": 0.0,
+   "forced_gap": 0.0
+  },
+  {
+   "pos": 370,
+   "ctx": "-the-art end-to-end performance on both",
+   "ctx_page": 1,
+   "forced": " M",
+   "argmax": " MP",
+   "margin": 0.25,
+   "forced_gap": 0.25
+  },
+  {
+   "pos": 454,
+   "ctx": "<BLOCK>image_caption[113, ",
+   "ctx_page": 1,
+   "forced": "808",
+   "argmax": "809",
+   "margin": 0.0,
+   "forced_gap": 0.0
+  },
+  {
+   "pos": 460,
+   "ctx": ", 808, 885, ",
+   "ctx_page": 1,
+   "forced": "858",
+   "argmax": "859",
+   "margin": 0.25,
+   "forced_gap": 0.25
+  },
+  {
+   "pos": 700,
+   "ctx": "4\n<BLOCK>text[186, ",
+   "ctx_page": 2,
+   "forced": "303",
+   "argmax": "304",
+   "margin": 0.5,
+   "forced_gap": 0.5
+  },
+  {
+   "pos": 793,
+   "ctx": "5\n<BLOCK>text[143, ",
+   "ctx_page": 2,
+   "forced": "371",
+   "argmax": "372",
+   "margin": 1.0,
+   "forced_gap": 1.0
+  },
+  {
+   "pos": 799,
+   "ctx": ", 371, 882, ",
+   "ctx_page": 2,
+   "forced": "387",
+   "argmax": "388",
+   "margin": 0.25,
+   "forced_gap": 0.25
+  },
+  {
+   "pos": 868,
+   "ctx": ", 416, 882, ",
+   "ctx_page": 2,
+   "forced": "431",
+   "argmax": "432",
+   "margin": 1.0,
+   "forced_gap": 1.0
+  },
+  {
+   "pos": 936,
+   "ctx": "title<LEVEL2>[116, ",
+   "ctx_page": 2,
+   "forced": "474",
+   "argmax": "475",
+   "margin": 0.25,
+   "forced_gap": 0.25
+  },
+  {
+   "pos": 963,
+   "ctx": ", 496, 882, ",
+   "ctx_page": 2,
+   "forced": "512",
+   "argmax": "513",
+   "margin": 1.25,
+   "forced_gap": 1.25
+  },
+  {
+   "pos": 1042,
+   "ctx": "9\n<BLOCK>text[143, ",
+   "ctx_page": 2,
+   "forced": "576",
+   "argmax": "577",
+   "margin": 1.75,
+   "forced_gap": 1.75
+  },
+  {
+   "pos": 1090,
+   "ctx": "10\n<BLOCK>text[143, ",
+   "ctx_page": 2,
+   "forced": "621",
+   "argmax": "622",
+   "margin": 0.0,
+   "forced_gap": 0.0
+  },
+  {
+   "pos": 1164,
+   "ctx": "11\n<BLOCK>text[186, ",
+   "ctx_page": 2,
+   "forced": "666",
+   "argmax": "667",
+   "margin": 1.5,
+   "forced_gap": 1.5
+  },
+  {
+   "pos": 1333,
+   "ctx": "title<LEVEL2>[115, ",
+   "ctx_page": 3,
+   "forced": "101",
+   "argmax": "100",
+   "margin": 0.5,
+   "forced_gap": 0.5
+  },
+  {
+   "pos": 1336,
+   "ctx": "2>[115, 101, ",
+   "ctx_page": 3,
+   "forced": "273",
+   "argmax": "274",
+   "margin": 0.5,
+   "forced_gap": 0.5
+  },
+  {
+   "pos": 1349,
+   "ctx": "<FORK>1. Introduction\n<BLOCK>text[",
+   "ctx_page": 3,
+   "forced": "158",
+   "argmax": "160",
+   "margin": 1.0,
+   "forced_gap": 1.5
+  },
+  {
+   "pos": 1448,
+   "ctx": "884, 381]<FORK>Document parsing",
+   "ctx_page": 3,
+   "forced": " recess",
+   "argmax": " is",
+   "margin": 2.938,
+   "forced_gap": 10.344
+  },
+  {
+   "pos": 1450,
+   "ctx": " 381]<FORK>Document parsing recessions",
+   "ctx_page": 3,
+   "forced": " have",
+   "argmax": " has",
+   "margin": 0.125,
+   "forced_gap": 0.125
+  },
+  {
+   "pos": 1686,
+   "ctx": "text[112, 388, ",
+   "ctx_page": 3,
+   "forced": "884",
+   "argmax": "883",
+   "margin": 0.75,
+   "forced_gap": 0.75
+  },
+  {
+   "pos": 1863,
+   "ctx": " contributions are as follows:\n<BLOCK>text[",
+   "ctx_page": 3,
+   "forced": "139",
+   "argmax": "140",
+   "margin": 0.25,
+   "forced_gap": 0.25
+  },
+  {
+   "pos": 1869,
+   "ctx": "text[139, 574, ",
+   "ctx_page": 3,
+   "forced": "884",
+   "argmax": "883",
+   "margin": 0.0,
+   "forced_gap": 0.0
+  },
+  {
+   "pos": 1936,
+   "ctx": " relationships. Token Sieve selectively incorporates top",
+   "ctx_page": 3,
+   "forced": "-k",
+   "argmax": "-$",
+   "margin": 0.125,
+   "forced_gap": 0.125
+  },
+  {
+   "pos": 2219,
+   "ctx": ", 924, 506, ",
+   "ctx_page": 3,
+   "forced": "935",
+   "argmax": "936",
+   "margin": 0.5,
+   "forced_gap": 0.5
+  },
+  {
+   "pos": 2257,
+   "ctx": "title<LEVEL3>[114, ",
+   "ctx_page": 4,
+   "forced": "132",
+   "argmax": "133",
+   "margin": 1.25,
+   "forced_gap": 1.25
+  },
+  {
+   "pos": 2263,
+   "ctx": ", 132, 418, ",
+   "ctx_page": 4,
+   "forced": "149",
+   "argmax": "150",
+   "margin": 0.25,
+   "forced_gap": 0.25
+  },
+  {
+   "pos": 2294,
+   "ctx": "886, 354]<FORK>Document parsing",
+   "ctx_page": 4,
+   "forced": " is",
+   "argmax": " has",
+   "margin": 7.125,
+   "forced_gap": 12.375
+  },
+  {
+   "pos": 2539,
+   "ctx": "3>[114, 374, ",
+   "ctx_page": 4,
+   "forced": "433",
+   "argmax": "434",
+   "margin": 0.0,
+   "forced_gap": 0.0
+  },
+  {
+   "pos": 2564,
+   "ctx": "text[112, 400, ",
+   "ctx_page": 4,
+   "forced": "884",
+   "argmax": "886",
+   "margin": 0.0,
+   "forced_gap": 0.0
+  },
+  {
+   "pos": 3049,
+   "ctx": "X} _ {t} = \\",
+   "ctx_page": 4,
+   "forced": "operatorname",
+   "argmax": "text",
+   "margin": 0.125,
+   "forced_gap": 0.125
+  },
+  {
+   "pos": 3098,
+   "ctx": "}\n$$\n<BLOCK>text[112, ",
+   "ctx_page": 4,
+   "forced": "821",
+   "argmax": "822",
+   "margin": 0.25,
+   "forced_gap": 0.25
+  },
+  {
+   "pos": 3104,
+   "ctx": ", 821, 884, ",
+   "ctx_page": 4,
+   "forced": "905",
+   "argmax": "903",
+   "margin": 1.0,
+   "forced_gap": 1.25
+  },
+  {
+   "pos": 3211,
+   "ctx": "]<FORK>4\n<PAGE><BLOCK>image[",
+   "ctx_page": 5,
+   "forced": "123",
+   "argmax": "125",
+   "margin": 0.75,
+   "forced_gap": 0.75
+  },
+  {
+   "pos": 3233,
+   "ctx": "image[384, 104, ",
+   "ctx_page": 5,
+   "forced": "616",
+   "argmax": "605",
+   "margin": 0.0,
+   "forced_gap": 0.0
+  },
+  {
+   "pos": 3252,
+   "ctx": ", 104, 882, ",
+   "ctx_page": 5,
+   "forced": "237",
+   "argmax": "236",
+   "margin": 0.0,
+   "forced_gap": 0.0
+  },
+  {
+   "pos": 3261,
+   "ctx": "]<FORK>\n<BLOCK>image_caption[",
+   "ctx_page": 5,
+   "forced": "112",
+   "argmax": "113",
+   "margin": 0.625,
+   "forced_gap": 0.625
+  },
+  {
+   "pos": 3264,
+   "ctx": "<BLOCK>image_caption[112, ",
+   "ctx_page": 5,
+   "forced": "281",
+   "argmax": "282",
+   "margin": 0.0,
+   "forced_gap": 0.0
+  },
+  {
+   "pos": 3281,
+   "ctx": "Figure 2 | MarathonDocBench versus",
+   "ctx_page": 5,
+   "forced": " M",
+   "argmax": " MP",
+   "margin": 0.25,
+   "forced_gap": 0.25
+  },
+  {
+   "pos": 3329,
+   "ctx": "4>[114, 349, ",
+   "ctx_page": 5,
+   "forced": "331",
+   "argmax": "335",
+   "margin": 0.5,
+   "forced_gap": 3.0
+  },
+  {
+   "pos": 3440,
+   "ctx": " range by roughly an order of magnitude beyond",
+   "ctx_page": 5,
+   "forced": " M",
+   "argmax": " MP",
+   "margin": 1.125,
+   "forced_gap": 1.125
+  },
+  {
+   "pos": 3623,
+   "ctx": "title<LEVEL3>[114, ",
+   "ctx_page": 5,
+   "forced": "666",
+   "argmax": "665",
+   "margin": 1.0,
+   "forced_gap": 1.0
+  },
+  {
+   "pos": 3855,
+   "ctx": "]<FORK>5\n<PAGE><BLOCK>image[",
+   "ctx_page": 6,
+   "forced": "115",
+   "argmax": "117",
+   "margin": 0.25,
+   "forced_gap": 0.75
+  },
+  {
+   "pos": 3877,
+   "ctx": "image[639, 99, ",
+   "ctx_page": 6,
+   "forced": "865",
+   "argmax": "868",
+   "margin": 0.5,
+   "forced_gap": 0.5
+  },
+  {
+   "pos": 3880,
+   "ctx": ", 99, 865, ",
+   "ctx_page": 6,
+   "forced": "315",
+   "argmax": "313",
+   "margin": 0.0,
+   "forced_gap": 0.0
+  },
+  {
+   "pos": 3971,
+   "ctx": "3>[114, 422, ",
+   "ctx_page": 6,
+   "forced": "530",
+   "argmax": "533",
+   "margin": 1.5,
+   "forced_gap": 1.5
+  },
+  {
+   "pos": 3974,
+   "ctx": ", 422, 530, ",
+   "ctx_page": 6,
+   "forced": "439",
+   "argmax": "438",
+   "margin": 0.0,
+   "forced_gap": 0.0
+  },
+  {
+   "pos": 3995,
+   "ctx": " Attention\n<BLOCK>text[113, ",
+   "ctx_page": 6,
+   "forced": "448",
+   "argmax": "449",
+   "margin": 1.0,
+   "forced_gap": 1.0
+  },
+  {
+   "pos": 4106,
+   "ctx": "4>[114, 533, ",
+   "ctx_page": 6,
+   "forced": "257",
+   "argmax": "258",
+   "margin": 0.25,
+   "forced_gap": 0.5
+  },
+  {
+   "pos": 4185,
+   "ctx": " pages:\n<BLOCK>equation[372, ",
+   "ctx_page": 6,
+   "forced": "618",
+   "argmax": "619",
+   "margin": 1.5,
+   "forced_gap": 1.5
+  },
+  {
+   "pos": 4361,
+   "ctx": "[ \\mathbf {p} _ {",
+   "ctx_page": 6,
+   "forced": "1",
+   "argmax": "i",
+   "margin": 0.125,
+   "forced_gap": 0.125
+  },
+  {
+   "pos": 4436,
+   "ctx": "title<LEVEL4>[114, ",
+   "ctx_page": 6,
+   "forced": "795",
+   "argmax": "796",
+   "margin": 0.0,
+   "forced_gap": 0.0
+  },
+  {
+   "pos": 4556,
+   "ctx": ".\n<BLOCK>page_number[494, ",
+   "ctx_page": 6,
+   "forced": "924",
+   "argmax": "925",
+   "margin": 0.25,
+   "forced_gap": 0.25
+  }
+ ]
+}
