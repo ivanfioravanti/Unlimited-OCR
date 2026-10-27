@@ -14,12 +14,12 @@ All 12 outputs pass/fail their quality checks identically across runs (`check_qu
 
 | engine | mode | run | tokens | total s | tok/s end-to-end | prefill s | decode tok/s |
 |---|---|---|---|---|---|---|---|
-| HF | base | 1 / 2 / 3 | 3934 / 3934 / 3934 | 112.15 / 110.19 / 110.78 | 35.08 / 35.70 / 35.51 | 1.96 / 1.38 / 1.40 | 38.3 / 38.8 / 38.6 (fwd 26.1 / 25.8 / 25.9 ms) |
-| HF | gundam | 1 / 2 / 3 | 4569 / 4569 / 4569 | 154.99 / 154.54 / 161.80 | 29.48 / 29.57 / 28.24 | 2.42 / 2.21 / 2.19 | (fwd 31.5 / 31.4 / 33.0 ms) |
+| HF | base | 1 / 2 / 3 | 3934 / 3934 / 3934 | 112.15 / 110.19 / 110.78 | 35.08 / 35.70 / 35.51 | 1.96 / 1.38 / 1.40 | 35.76 / 36.22 / 36.03 (fwd 26.1 / 25.8 / 25.9 ms) |
+| HF | gundam | 1 / 2 / 3 | 4569 / 4569 / 4569 | 154.99 / 154.54 / 161.80 | 29.48 / 29.57 / 28.24 | 2.42 / 2.21 / 2.19 | 30.03 / 30.08 / 28.70 (fwd 31.5 / 31.4 / 33.0 ms) |
 | SGLang | base | 1 / 2 / 3 | 3933 / 3933 / 3933 | 27.93 / 27.87 / 27.89 | 140.82 / 141.11 / 141.01 | 0.79 / 0.67 / 0.67 | 144.91 / 144.56 / 144.49 |
 | SGLang | gundam | 1 / 2 / 3 | 4570 / 4570 / 4570 | 34.56 / 33.67 / 33.42 | 132.24 / 135.73 / 136.73 | 2.63 / 1.72 / 1.45 | 143.15 / 143.02 / 142.94 |
 
-Spread (min-max over 3): HF base 110.2-112.2 s (1.8%), HF gundam 154.5-161.8 s (4.7%), SGLang base 27.87-27.93 s (0.2%), SGLang gundam 33.4-34.6 s (3.4%, all in the prefill of the cold first run; decode tok/s spread 0.1%). Output text: HF base r2 == r3 byte-identical, HF gundam r2 == r3 identical; SGLang 3 runs byte-identical per mode. Token counts are the same in all repeats (HF base differs from the original 3937/3935-token runs only by how tokens were counted).
+Spread (min-max over 3): HF base 110.2-112.2 s (1.8%), HF gundam 154.5-161.8 s (4.7%), SGLang base 27.87-27.93 s (0.2%), SGLang gundam 33.4-34.6 s (3.4%, all in the prefill of the cold first run; decode tok/s spread 0.1%). Output text: all 3 HF runs are byte-identical per mode. SGLang runs 2 and 3 are byte-identical per mode, but the cold first run after server start differs from them by a single bbox coordinate (base: `header[117, 40, 396, 72]` vs `73`; gundam: title y `134` vs `135`; same text, 99.8% token match), so SGLang is deterministic once warm and not necessarily on its very first request (cause not investigated). Token counts are the same in all repeats.
 
 ## 2. SGLang concurrency, 6 pages, gundam (`gb10_sglang_concurrency_gundam_result.json`)
 C identical simultaneous requests, one burst each (default server flags, `--max-running-requests 64`). Aggregate = total output tokens / wall from first send to last finish. Latency = send to last token of that request. No errors. Every request produced 4570 tokens and EOS. (Not quality-checked individually; I kept only request 0 per C, and the C=16 sample passes all five checks.)
