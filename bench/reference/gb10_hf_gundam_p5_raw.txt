@@ -1,0 +1,80 @@
+<PAGE><BLOCK>header[119, 38, 396, 72]<FORK>Baidu 百度 | ERNIE
+<BLOCK>title<LEVEL1>[347, 135, 652, 155]<FORK>Unlimited OCR Works 2
+<BLOCK>text[200, 162, 796, 181]<FORK>Pioneering the OCR-3.0 Era: From Long- to Unlimited-Horizon Parsing
+<BLOCK>text[417, 212, 581, 227]<FORK>Baidu ERNIE Team
+<BLOCK>title<LEVEL2>[448, 274, 551, 291]<FORK>Abstract
+<BLOCK>text[113, 298, 886, 571]<FORK>Unlimited OCR ushers the era of long-horizon parsing, substantially mitigating the growth of working memory as document lengthens. However, as document length scales to hundreds of pages, the visual context grows substantially, sharply increasing the computational cost of each decoding step and limiting the scalability of ultra-long document parsing. Inspired by human book transcription via localized focus without re-scanning preceding pages, we introduce Unlimited OCR 2, a document parsing model that looks only at what it transcribes. Building on Unlimited OCR, we upgrade all the decoder attention modules to Sparse Reference Sliding Window Attention (SR-SWA), bounding active reference tokens to a fixed capacity and thus sustaining constant computational costs across arbitrarily long documents. By combining SR-SWA with Unlimited-Horizon Decoding Paradigm, Unlimited OCR 2 enables document parsing over virtually unlimited lengths without prohibitive memory overhead. At the hundred-page scale, Unlimited OCR 2 achieves 7.0× and 5.6× per-step speedups over Full Attention and R-SWA, respectively. Furthermore, it delivers state-of-the-art end-to-end performance on both MPDocBench and MarathonDocBench, our newly proposed benchmark targeting hundred-page document parsing. Ultimately, the capacity for uninterrupted, one-shot document parsing signifies a fundamental paradigm shift into the OCR 3.0 era.
+<BLOCK>image[202, 574, 481, 801]<FORK>
+<BLOCK>image[501, 574, 800, 801]<FORK>
+<BLOCK>image_caption[113, 808, 886, 859]<FORK>Figure 1 | R-SWA vs SR-SWA. R-SWA computes attention over all visual tokens across pages, inducing extreme visual redundancy; SR-SWA sparsely attends to relevant visual regions, aligning machine decoding with human reading intuition.
+<PAGE><BLOCK>title<LEVEL2>[115, 100, 210, 116]<FORK>Contents
+<BLOCK>title<LEVEL2>[117, 143, 882, 158]<FORK>1 Introduction 3
+<BLOCK>title<LEVEL2>[116, 178, 882, 193]<FORK>2 Related Works 4
+<BLOCK>text[143, 200, 882, 216]<FORK>2.1 VLM-based Document Parsing 4
+<BLOCK>text[143, 223, 882, 240]<FORK>2.2 Efficient Long-Context Modeling 4
+<BLOCK>other[143, 200, 882, 240]<FORK>
+<BLOCK>title<LEVEL2>[116, 259, 882, 275]<FORK>3 Methodology 4
+<BLOCK>text[143, 282, 882, 298]<FORK>3.1 Problem Setup 4
+<BLOCK>text[185, 304, 882, 320]<FORK>3.1.1 Unlimited-horizon Parsing 4
+<BLOCK>text[185, 327, 882, 342]<FORK>3.1.2 MarathonDocBench 5
+<BLOCK>other[185, 304, 882, 342]<FORK>
+<BLOCK>text[143, 349, 882, 364]<FORK>3.2 Architecture 5
+<BLOCK>text[143, 372, 882, 388]<FORK>3.3 Sparse Reference Sliding Window Attention 6
+<BLOCK>other[143, 349, 882, 388]<FORK>
+<BLOCK>text[185, 394, 882, 410]<FORK>3.3.1 Page Gate 6
+<BLOCK>text[185, 417, 882, 432]<FORK>3.3.2 Token Sieve 6
+<BLOCK>other[185, 394, 882, 432]<FORK>
+<BLOCK>text[143, 439, 882, 455]<FORK>3.4 Unlimited-Horizon Decoding Paradigm 7
+<BLOCK>title<LEVEL2>[116, 475, 882, 491]<FORK>4 Experimental Settings 8
+<BLOCK>text[143, 497, 882, 513]<FORK>4.1 Data Engine 8
+<BLOCK>text[143, 520, 882, 536]<FORK>4.2 Implementation Details 8
+<BLOCK>other[143, 497, 882, 536]<FORK>
+<BLOCK>title<LEVEL2>[116, 556, 882, 571]<FORK>5 Evaluation 9
+<BLOCK>text[143, 578, 882, 593]<FORK>5.1 Benchmarks and Metrics 9
+<BLOCK>text[143, 601, 882, 616]<FORK>5.2 Main Results 10
+<BLOCK>text[143, 623, 882, 639]<FORK>5.3 Scaling with Document Length 11
+<BLOCK>other[143, 578, 882, 639]<FORK>
+<BLOCK>text[185, 645, 882, 662]<FORK>5.3.1 Feasibility of Unlimited-horizon Parsing 11
+<BLOCK>text[185, 668, 882, 684]<FORK>5.3.2 Length-Invariant Accuracy 11
+<BLOCK>text[185, 690, 882, 707]<FORK>5.3.3 Constant Per-Step Decoding Latency 12
+<BLOCK>other[185, 645, 882, 707]<FORK>
+<BLOCK>title<LEVEL2>[116, 726, 882, 741]<FORK>6 Limitation and Future Work 12
+<BLOCK>title<LEVEL2>[116, 762, 882, 777]<FORK>7 Conclusion 12
+<BLOCK>title<LEVEL2>[116, 798, 882, 813]<FORK>8 Author List 13
+<BLOCK>page_number[493, 924, 505, 935]<FORK>2
+<PAGE><BLOCK>title<LEVEL2>[115, 100, 275, 116]<FORK>1. Introduction
+<BLOCK>text[160, 131, 838, 163]<FORK>"Pixels are my body, and tokens are my blood. I have parsed over a thousand pages. Unknown to KV cache. Nor known to context limits. So, as I pray: Unlimited OCR Works."
+<BLOCK>text[527, 168, 838, 182]<FORK>Snarcv on huggingface (Adapted from UBW)
+<BLOCK>text[112, 187, 884, 381]<FORK>Document parsing has undergone a major paradigm shift, transitioning from traditional multi-stage pipelines (OCR-1.0)  $ [5, 6, 8, 20, 22, 26, 40] $  with handcrafted detection and recognition modules to end-to-end Vision-Language Models (OCR-2.0)  $ [7, 18, 19, 21, 30, 31] $ . By formulating document understanding as a unified sequence-to-sequence transcription task, OCR-2.0 frameworks effectively eliminate cumulative pipeline errors. Our previous work, Unlimited OCR  $ [37] $ , pushed OCR-2.0 boundaries to tens of pages by using Reference Sliding Window Attention (R-SWA) to maintain a constant KV cache. Nevertheless, it still computes attention over all visual tokens across pages during decoding. As document length scales, this persistent attention to non-informative visual tokens severely escalates visual redundancy, compounding the difficulty of end-to-end inference. This visual attention bottleneck naturally prompts a fundamental question: how can we transition from length-limited parsing to an unlimited one-shot paradigm and genuinely inaugurate the OCR-3.0 era?
+<BLOCK>text[112, 388, 883, 566]<FORK>To answer this question, human transcription of lengthy books provides a clear physical intuition for parsing scaling: as we copy text page by page, we maintain localized visual focus, casting only momentary glances back when cross-page references are needed, rather than keeping the entire volume active in mind. This cognitive mechanism reveals that visual dependencies in multi-page documents are inherently page-sparse yet intra-page concentrated. However, standard dense global attention completely overlooks this sparse dynamic, incurring redundant attention interactions across all pages. This not only incurs prohibitive computational overhead, but also leads to severe memory bottlenecks as document length scales. To break through these efficiency and memory bottlenecks, we align machine perception with human reading patterns and present Unlimited OCR 2, pioneering an unlimited-horizon parsing framework for the OCR-3.0 era. Our main contributions are as follows:
+<BLOCK>text[140, 573, 884, 669]<FORK>- We introduce Sparse Reference Sliding Window Attention (SR-SWA), a hierarchical sparse attention mechanism designed for unlimited visual context. Specifically, Page Gate first narrows each query's visual reference scope from the entire document to relevant pages while robustly modeling multi-page positional relationships. Token Sieve selectively incorporates top-k remote token buckets to capture long-range visual dependencies, thereby drastically reducing attention overhead while preserving comprehensive context.
+<BLOCK>text[141, 670, 883, 734]<FORK>- We introduce MarathonDocBench, a benchmark for hundred-page document parsing. It substantially extends existing evaluations in document length and cross-page structural complexity, enabling a comprehensive assessment of long-document parsing performance in the hundred-page regime.
+<BLOCK>text[141, 735, 885, 831]<FORK>- Comprehensive evaluations in long-horizon settings demonstrate that our approach maintains constant per-step decoding latency regardless of document length while achieving state-of-the-art end-to-end performance on multi-page benchmarks. Building on these advances, we establish an efficient unlimited-horizon parsing paradigm by integrating SR-SWA with the Unlimited-Horizon Decoding Paradigm, enabling document parsing over virtually unlimited lengths.
+<BLOCK>other[140, 573, 885, 831]<FORK>
+<BLOCK>text[113, 838, 884, 903]<FORK>In summary, SR-SWA fundamentally breaks the computational and memory bottlenecks of ultra-long visual context. Operating at constant per-step decoding latency with length-invariant accuracy across hundreds of pages, Unlimited OCR 2 unlocks scalable long-document parsing and paves the way for the OCR-3.0 era of unlimited-horizon understanding.
+<BLOCK>page_number[493, 924, 506, 935]<FORK>3
+<PAGE><BLOCK>title<LEVEL2>[114, 100, 293, 116]<FORK>2. Related Works
+<BLOCK>title<LEVEL3>[114, 133, 416, 150]<FORK>2.1. VLM-based Document Parsing
+<BLOCK>text[112, 159, 886, 354]<FORK>Document parsing has increasingly been reshaped by advances in vision-language models, evolving from pipeline-based OCR-1.0 systems  $ [5, 6, 8, 20, 22, 26, 40] $ , which combine specialized page analysis modules with VLM-based decoding, to unified VLM-based OCR-2.0 systems that directly generate structured representations from document images. OCR-2.0 encompasses both single-page parsers  $ [7, 18, 19, 21, 30, 31] $  and Unlimited OCR  $ [37] $ , which extends end-to-end parsing to multi-page documents by jointly modeling their visual content within a shared context. However, although Unlimited OCR improves long-document efficiency with R-SWA, it still densely attends to all remote visual tokens, causing the visual context accessible to each decoding query to expand with document length and creating a fundamental scalability bottleneck at the hundred-page scale. Unlimited OCR 2 overcomes this limitation by explicitly bounding remote visual access, enabling attention-efficient end-to-end parsing of hundred-page documents and advancing document parsing into the OCR-3.0 era.
+<BLOCK>title<LEVEL3>[114, 374, 433, 391]<FORK>2.2. Efficient Long-Context Modeling
+<BLOCK>text[112, 400, 886, 483]<FORK>Efficient long-context modeling has been explored through both attention replacement and sparse attention. Linear or recurrent alternatives  $ [11, 15, 17, 35, 36] $  reduce long-context cost by summarizing historical information into compact states. Document parsing, however, requires long-range memory to preserve fine-grained visual evidence for accurate recognition and cross-page retrieval, which may not be fully retained within such compact representations.
+<BLOCK>text[112, 489, 886, 603]<FORK>Sparse attention retains direct access to selected historical tokens or KV blocks while avoiding dense all-to-all computation. Early methods use predefined patterns such as local windows and global tokens  $ [2, 38] $ , whereas recent approaches adopt query-dependent retrieval. Hard-selection methods, such as Compressed Sparse Attention(CSA)  $ [33] $  and MiniMax Sparse Attention(MSA)  $ [16] $ , rely on discrete top-k routing and typically require auxiliary supervision or warmup. In contrast, DashAttention  $ [13] $  and HiLS  $ [12] $  incorporate differentiable or forward-integrated routing scores, enabling more direct end-to-end optimization.
+<BLOCK>title<LEVEL2>[114, 625, 283, 644]<FORK>3. Methodology
+<BLOCK>title<LEVEL3>[114, 658, 283, 674]<FORK>3.1. Problem Setup
+<BLOCK>title<LEVEL4>[114, 684, 394, 701]<FORK>3.1.1. Unlimited-horizon Parsing
+<BLOCK>text[113, 711, 886, 791]<FORK>Unlimited-horizon parsing aims to enable end-to-end processing of documents of arbitrary lengths, from single-page forms to massive multi-page documents, with bounded computational and memory complexities. Formally, multi-page document parsing generates a transcription  $ \mathcal{Y} = (y_{1}, \ldots, y_{L}) $  from an ordered document  $ \mathcal{D} = (P_{1}, \ldots, P_{N}) $  with visual tokens  $ V_{1:N} $ . At decoding step t, the model operates on:
+<BLOCK>equation[375, 798, 884, 815]<FORK>$$
+\mathcal {X} _ {t} = \text { Concat } \left(\mathcal {V} _ {1}, \dots , \mathcal {V} _ {N}, y _ {<   t}\right). \tag {1}
+$$
+<BLOCK>text[112, 822, 886, 906]<FORK>While Unlimited OCR constrained text history to a fixed sliding window via R-SWA, it still requires attending over all preceding visual tokens  $ V_{1:N} $ . In the hundred-page regime, this page-dependent visual expansion becomes the primary bottleneck. Decoupling visual context from page count N to maintain a bounded computational and memory footprint directly motivates our proposed Sparse Reference Sliding Window Attention (SR-SWA).
+<BLOCK>page_number[494, 924, 506, 935]<FORK>4
+<PAGE><BLOCK>image[125, 105, 379, 270]<FORK>
+<BLOCK>image[380, 104, 603, 270]<FORK>
+<BLOCK>image[604, 104, 875, 270]<FORK>
+<BLOCK>image_caption[113, 281, 882, 331]<FORK>Figure 2 | MarathonDocBench versus MPDocBench. MarathonDocBench extends document length from tens to hundreds of pages (a), with substantially richer cross-page structures as shown in (b) and (c).
+<BLOCK>title<LEVEL4>[115, 349, 335, 364]<FORK>3.1.2. MarathonDocBench
+<BLOCK>text[113, 375, 884, 472]<FORK>Existing multi-page document parsing benchmarks neither extend to the hundred-page scale nor sufficiently capture the rich cross-page structures that emerge in long documents. To address this gap, we introduce MarathonDocBench, the first benchmark specifically designed for hundred-page document parsing. It contains 100 documents spanning 103–300 pages with 205k annotated layout elements, extending the document-length range by roughly an order of magnitude beyond MPDocBench [41].
+<BLOCK>text[113, 480, 884, 643]<FORK>Beyond document length, MarathonDocBench contains substantially richer cross-page structures than MPDocBench, with cross-page text and tables appearing much more frequently and densely across documents, as summarized in Figure 2. This makes MarathonDocBench a substantially more challenging testbed for evaluating whether end-to-end parsers can preserve document-level structure while scaling from tens to hundreds of pages. To ensure reliable evaluation, structural annotations, including bounding boxes, block type, hierarchy, reading order, and cross-page continuations of text and tables, are initialized from a strong page-by-page parser and carefully refined by human annotators. Content transcriptions are initialized from the same parser outputs and verified through an iterative VLM-based refinement pipeline, with flagged disagreements adjudicated by human annotators.
+<BLOCK>title<LEVEL3>[115, 665, 262, 680]<FORK>3.2. Architecture
+<BLOCK>text[113, 690, 885, 853]<FORK>Unlimited OCR 2 inherits the fundamental backbone from Unlimited OCR, leveraging DeepSeek OCR [28] as its foundation. Specifically, it employs the DeepEncoder paired with a Mixture-of-Experts (MoE) decoder architecture featuring 3B total parameters and 500M activated parameters per token. Building upon this base, we replace the baseline R-SWA with our proposed SR-SWA as shown in Figure 3. While R-SWA bounds local interactions, its visual context scope still expands with growing document length, leading to noticeable latency accumulation over ultralong horizons. By introducing a selective remote visual routing mechanism, SR-SWA strictly bounds the active context scope, enabling Unlimited OCR 2 to maintain a constant KV cache footprint across both text and visual modalities during unlimited-horizon decoding. We detail the inner mechanics of SR-SWA in the following subsections.
+<BLOCK>page_number[494, 924, 506, 936]<FORK>5

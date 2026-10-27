@@ -1,0 +1,48 @@
+{
+ "tag": "g3_hf",
+ "mode": "gundam",
+ "pages": 3,
+ "stream": false,
+ "max_new_tokens": 24576,
+ "gpu": "NVIDIA GB10",
+ "torch": "2.13.0+cu130",
+ "dtype": "bfloat16",
+ "attn_implementation": "eager",
+ "finish": "stop",
+ "output_tokens": 2234,
+ "num_pages_out": 3,
+ "expected_pages": 3,
+ "prompt_tokens": 2717,
+ "total_wall_s": 61.85,
+ "infer_internal_time_s": 61.65,
+ "internal_prefill_to_first_token_s": 1.91,
+ "preprocess_s": 0.16,
+ "sam_s": 0.739,
+ "clip_s": 0.075,
+ "prefill_forward_s": 1.894,
+ "decode_forward_s": 55.71,
+ "decode_wall_s": 59.73,
+ "tok_per_s_total": 36.12,
+ "tok_per_s_decode_wall": 37.4,
+ "ms_per_token_forward_mean": 24.94,
+ "ms_per_token_wall_mean": 26.74,
+ "ms_per_token_forward_quartiles": [
+  23.35,
+  24.28,
+  25.63,
+  26.48
+ ],
+ "ms_per_token_wall_quartiles": [
+  25.16,
+  26.08,
+  27.43,
+  28.28
+ ],
+ "peak_mem_gb": 6.93,
+ "fallback_lines": 13,
+ "fallback_sample": [
+  "/home/ifioravanti/venvs/uocr/lib/python3.10/site-packages/triton/language/core.py:2284: UserWarning: tl.make_block_ptr is deprecated. Use TensorDescriptor or tl.make_tensor_descriptor instead.",
+  "[DASH] Triton block-sparse path active (S=2717, block_size=32, remote_topk=12, local_window=128)"
+ ],
+ "cpu_params": 0
+}

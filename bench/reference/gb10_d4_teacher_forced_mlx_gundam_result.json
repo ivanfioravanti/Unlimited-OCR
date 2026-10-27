@@ -1,0 +1,590 @@
+{
+ "tag": "d4_teacher_mlx_gundam",
+ "mode": "gundam",
+ "pages": 6,
+ "stream": false,
+ "max_new_tokens": 24576,
+ "gpu": "NVIDIA GB10",
+ "torch": "2.13.0+cu130",
+ "dtype": "bfloat16",
+ "attn_implementation": "eager",
+ "teacher_roundtrip_ok": true,
+ "teacher_tokens": 3988,
+ "agree": 3925,
+ "agree_pct": 98.42,
+ "disagree": 63,
+ "disagree_margin_lt_0_5": 35,
+ "disagree_margin_lt_1": 56,
+ "disagree_margin_ge_2": 1,
+ "disagree_margin_median": 0.25,
+ "disagree_margin_max": 2.0,
+ "all_disagreements": [
+  {
+   "pos": 7,
+   "ctx": "<PAGE><BLOCK>header[119, ",
+   "ctx_page": 1,
+   "forced": "39",
+   "argmax": "38",
+   "margin": 0.125,
+   "forced_gap": 0.125
+  },
+  {
+   "pos": 13,
+   "ctx": ", 39, 396, ",
+   "ctx_page": 1,
+   "forced": "74",
+   "argmax": "72",
+   "margin": 0.25,
+   "forced_gap": 1.25
+  },
+  {
+   "pos": 29,
+   "ctx": "1>[347, 135, ",
+   "ctx_page": 1,
+   "forced": "654",
+   "argmax": "653",
+   "margin": 0.75,
+   "forced_gap": 0.75
+  },
+  {
+   "pos": 45,
+   "ctx": " OCR Works 2\n<BLOCK>text[",
+   "ctx_page": 1,
+   "forced": "201",
+   "argmax": "200",
+   "margin": 0.25,
+   "forced_gap": 0.25
+  },
+  {
+   "pos": 48,
+   "ctx": "2\n<BLOCK>text[201, ",
+   "ctx_page": 1,
+   "forced": "162",
+   "argmax": "163",
+   "margin": 0.75,
+   "forced_gap": 0.75
+  },
+  {
+   "pos": 51,
+   "ctx": "text[201, 162, ",
+   "ctx_page": 1,
+   "forced": "798",
+   "argmax": "797",
+   "margin": 0.5,
+   "forced_gap": 0.5
+  },
+  {
+   "pos": 117,
+   "ctx": ", 274, 553, ",
+   "ctx_page": 1,
+   "forced": "293",
+   "argmax": "292",
+   "margin": 0.75,
+   "forced_gap": 0.75
+  },
+  {
+   "pos": 128,
+   "ctx": "Abstract\n<BLOCK>text[112, ",
+   "ctx_page": 1,
+   "forced": "297",
+   "argmax": "298",
+   "margin": 0.25,
+   "forced_gap": 0.25
+  },
+  {
+   "pos": 414,
+   "ctx": "3.0 era.\n<BLOCK>image[",
+   "ctx_page": 1,
+   "forced": "207",
+   "argmax": "203",
+   "margin": 0.0,
+   "forced_gap": 0.375
+  },
+  {
+   "pos": 417,
+   "ctx": " era.\n<BLOCK>image[207, ",
+   "ctx_page": 1,
+   "forced": "576",
+   "argmax": "577",
+   "margin": 0.0,
+   "forced_gap": 0.0
+  },
+  {
+   "pos": 423,
+   "ctx": ", 576, 482, ",
+   "ctx_page": 1,
+   "forced": "799",
+   "argmax": "798",
+   "margin": 0.0,
+   "forced_gap": 0.0
+  },
+  {
+   "pos": 430,
+   "ctx": " 799]<FORK>\n<BLOCK>image[",
+   "ctx_page": 1,
+   "forced": "505",
+   "argmax": "508",
+   "margin": 0.0,
+   "forced_gap": 0.625
+  },
+  {
+   "pos": 433,
+   "ctx": "<FORK>\n<BLOCK>image[505, ",
+   "ctx_page": 1,
+   "forced": "576",
+   "argmax": "577",
+   "margin": 0.0,
+   "forced_gap": 0.0
+  },
+  {
+   "pos": 436,
+   "ctx": "image[505, 576, ",
+   "ctx_page": 1,
+   "forced": "797",
+   "argmax": "798",
+   "margin": 0.0,
+   "forced_gap": 0.0
+  },
+  {
+   "pos": 439,
+   "ctx": ", 576, 797, ",
+   "ctx_page": 1,
+   "forced": "799",
+   "argmax": "798",
+   "margin": 0.0,
+   "forced_gap": 0.0
+  },
+  {
+   "pos": 532,
+   "ctx": "119]<FORK>Contents\n<BLOCK>text[",
+   "ctx_page": 2,
+   "forced": "110",
+   "argmax": "111",
+   "margin": 0.0,
+   "forced_gap": 0.0
+  },
+  {
+   "pos": 538,
+   "ctx": "text[110, 138, ",
+   "ctx_page": 2,
+   "forced": "888",
+   "argmax": "887",
+   "margin": 0.5,
+   "forced_gap": 0.5
+  },
+  {
+   "pos": 541,
+   "ctx": ", 138, 888, ",
+   "ctx_page": 2,
+   "forced": "818",
+   "argmax": "817",
+   "margin": 0.25,
+   "forced_gap": 0.5
+  },
+  {
+   "pos": 795,
+   "ctx": " List 13\n<BLOCK>page_number[",
+   "ctx_page": 2,
+   "forced": "492",
+   "argmax": "493",
+   "margin": 0.75,
+   "forced_gap": 0.75
+  },
+  {
+   "pos": 804,
+   "ctx": ", 924, 507, ",
+   "ctx_page": 2,
+   "forced": "937",
+   "argmax": "936",
+   "margin": 0.25,
+   "forced_gap": 0.25
+  },
+  {
+   "pos": 825,
+   "ctx": ", 101, 275, ",
+   "ctx_page": 3,
+   "forced": "118",
+   "argmax": "117",
+   "margin": 0.5,
+   "forced_gap": 0.5
+  },
+  {
+   "pos": 838,
+   "ctx": " Introduction\n<BLOCK>text[161, ",
+   "ctx_page": 3,
+   "forced": "133",
+   "argmax": "132",
+   "margin": 0.0,
+   "forced_gap": 0.0
+  },
+  {
+   "pos": 915,
+   "ctx": " on huggingface (Adapted from U",
+   "ctx_page": 3,
+   "forced": "BB",
+   "argmax": "BW",
+   "margin": 1.625,
+   "forced_gap": 1.625
+  },
+  {
+   "pos": 927,
+   "ctx": "text[114, 188, ",
+   "ctx_page": 3,
+   "forced": "886",
+   "argmax": "885",
+   "margin": 1.0,
+   "forced_gap": 1.0
+  },
+  {
+   "pos": 1348,
+   "ctx": " contributions are as follows:\n<BLOCK>text[",
+   "ctx_page": 3,
+   "forced": "142",
+   "argmax": "141",
+   "margin": 0.5,
+   "forced_gap": 0.5
+  },
+  {
+   "pos": 1354,
+   "ctx": "text[142, 574, ",
+   "ctx_page": 3,
+   "forced": "886",
+   "argmax": "885",
+   "margin": 0.5,
+   "forced_gap": 0.5
+  },
+  {
+   "pos": 1451,
+   "ctx": "text[142, 671, ",
+   "ctx_page": 3,
+   "forced": "884",
+   "argmax": "885",
+   "margin": 0.0,
+   "forced_gap": 0.0
+  },
+  {
+   "pos": 1603,
+   "ctx": "text[114, 839, ",
+   "ctx_page": 3,
+   "forced": "886",
+   "argmax": "885",
+   "margin": 0.0,
+   "forced_gap": 0.0
+  },
+  {
+   "pos": 1682,
+   "ctx": ".\n<BLOCK>page_number[493, ",
+   "ctx_page": 3,
+   "forced": "925",
+   "argmax": "924",
+   "margin": 1.0,
+   "forced_gap": 1.0
+  },
+  {
+   "pos": 1700,
+   "ctx": "\n<PAGE><BLOCK>title<LEVEL2>[",
+   "ctx_page": 4,
+   "forced": "115",
+   "argmax": "114",
+   "margin": 0.5,
+   "forced_gap": 0.5
+  },
+  {
+   "pos": 1706,
+   "ctx": "2>[115, 101, ",
+   "ctx_page": 4,
+   "forced": "295",
+   "argmax": "294",
+   "margin": 0.25,
+   "forced_gap": 0.25
+  },
+  {
+   "pos": 1709,
+   "ctx": ", 101, 295, ",
+   "ctx_page": 4,
+   "forced": "118",
+   "argmax": "117",
+   "margin": 0.25,
+   "forced_gap": 0.25
+  },
+  {
+   "pos": 1726,
+   "ctx": "title<LEVEL3>[115, ",
+   "ctx_page": 4,
+   "forced": "133",
+   "argmax": "134",
+   "margin": 2.0,
+   "forced_gap": 2.0
+  },
+  {
+   "pos": 1729,
+   "ctx": "3>[115, 133, ",
+   "ctx_page": 4,
+   "forced": "418",
+   "argmax": "417",
+   "margin": 0.5,
+   "forced_gap": 0.5
+  },
+  {
+   "pos": 1755,
+   "ctx": "text[113, 160, ",
+   "ctx_page": 4,
+   "forced": "886",
+   "argmax": "885",
+   "margin": 0.25,
+   "forced_gap": 0.25
+  },
+  {
+   "pos": 1990,
+   "ctx": " era.\n<BLOCK>title<LEVEL3>[",
+   "ctx_page": 4,
+   "forced": "115",
+   "argmax": "114",
+   "margin": 0.875,
+   "forced_gap": 0.875
+  },
+  {
+   "pos": 2021,
+   "ctx": "text[114, 401, ",
+   "ctx_page": 4,
+   "forced": "886",
+   "argmax": "885",
+   "margin": 0.5,
+   "forced_gap": 0.5
+  },
+  {
+   "pos": 2533,
+   "ctx": "1)\n<BLOCK>text[114, ",
+   "ctx_page": 4,
+   "forced": "822",
+   "argmax": "823",
+   "margin": 0.5,
+   "forced_gap": 0.5
+  },
+  {
+   "pos": 2536,
+   "ctx": "text[114, 822, ",
+   "ctx_page": 4,
+   "forced": "886",
+   "argmax": "885",
+   "margin": 0.5,
+   "forced_gap": 0.5
+  },
+  {
+   "pos": 2635,
+   "ctx": "_number[493, 925, ",
+   "ctx_page": 4,
+   "forced": "507",
+   "argmax": "506",
+   "margin": 0.25,
+   "forced_gap": 0.25
+  },
+  {
+   "pos": 2647,
+   "ctx": "]<FORK>4\n<PAGE><BLOCK>chart[",
+   "ctx_page": 5,
+   "forced": "130",
+   "argmax": "126",
+   "margin": 0.0,
+   "forced_gap": 4.5
+  },
+  {
+   "pos": 2653,
+   "ctx": "chart[130, 106, ",
+   "ctx_page": 5,
+   "forced": "372",
+   "argmax": "868",
+   "margin": 0.375,
+   "forced_gap": 2.625
+  },
+  {
+   "pos": 2656,
+   "ctx": ", 106, 372, ",
+   "ctx_page": 5,
+   "forced": "260",
+   "argmax": "265",
+   "margin": 0.25,
+   "forced_gap": 2.5
+  },
+  {
+   "pos": 2663,
+   "ctx": " 260]<FORK>\n<BLOCK>chart[",
+   "ctx_page": 5,
+   "forced": "338",
+   "argmax": "351",
+   "margin": 0.0,
+   "forced_gap": 0.875
+  },
+  {
+   "pos": 2669,
+   "ctx": "chart[338, 106, ",
+   "ctx_page": 5,
+   "forced": "600",
+   "argmax": "599",
+   "margin": 0.0,
+   "forced_gap": 0.0
+  },
+  {
+   "pos": 2672,
+   "ctx": ", 106, 600, ",
+   "ctx_page": 5,
+   "forced": "273",
+   "argmax": "272",
+   "margin": 0.25,
+   "forced_gap": 0.25
+  },
+  {
+   "pos": 2688,
+   "ctx": ", 106, 872, ",
+   "ctx_page": 5,
+   "forced": "235",
+   "argmax": "234",
+   "margin": 0.25,
+   "forced_gap": 0.25
+  },
+  {
+   "pos": 2784,
+   "ctx": ". MarathonDocBench\n<BLOCK>text[",
+   "ctx_page": 5,
+   "forced": "113",
+   "argmax": "114",
+   "margin": 0.75,
+   "forced_gap": 0.75
+  },
+  {
+   "pos": 2793,
+   "ctx": ", 376, 885, ",
+   "ctx_page": 5,
+   "forced": "475",
+   "argmax": "474",
+   "margin": 0.25,
+   "forced_gap": 0.25
+  },
+  {
+   "pos": 3083,
+   "ctx": "text[113, 691, ",
+   "ctx_page": 5,
+   "forced": "887",
+   "argmax": "886",
+   "margin": 0.5,
+   "forced_gap": 0.5
+  },
+  {
+   "pos": 3287,
+   "ctx": "]<FORK>5\n<PAGE><BLOCK>image[",
+   "ctx_page": 6,
+   "forced": "123",
+   "argmax": "122",
+   "margin": 0.125,
+   "forced_gap": 0.125
+  },
+  {
+   "pos": 3293,
+   "ctx": "image[123, 102, ",
+   "ctx_page": 6,
+   "forced": "873",
+   "argmax": "872",
+   "margin": 0.5,
+   "forced_gap": 0.5
+  },
+  {
+   "pos": 3308,
+   "ctx": "<BLOCK>image_caption[114, ",
+   "ctx_page": 6,
+   "forced": "333",
+   "argmax": "334",
+   "margin": 0.5,
+   "forced_gap": 0.5
+  },
+  {
+   "pos": 3384,
+   "ctx": "title<LEVEL3>[114, ",
+   "ctx_page": 6,
+   "forced": "422",
+   "argmax": "423",
+   "margin": 1.25,
+   "forced_gap": 1.25
+  },
+  {
+   "pos": 3417,
+   "ctx": ", 449, 884, ",
+   "ctx_page": 6,
+   "forced": "515",
+   "argmax": "514",
+   "margin": 0.0,
+   "forced_gap": 0.0
+  },
+  {
+   "pos": 3496,
+   "ctx": " q $. SR-SWA constructs  $",
+   "ctx_page": 6,
+   "forced": " \\",
+   "argmax": " S",
+   "margin": 0.5,
+   "forced_gap": 0.5
+  },
+  {
+   "pos": 3610,
+   "ctx": " from designated target pages:\n<BLOCK>equation[",
+   "ctx_page": 6,
+   "forced": "372",
+   "argmax": "371",
+   "margin": 0.25,
+   "forced_gap": 0.25
+  },
+  {
+   "pos": 3613,
+   "ctx": " pages:\n<BLOCK>equation[372, ",
+   "ctx_page": 6,
+   "forced": "619",
+   "argmax": "620",
+   "margin": 0.25,
+   "forced_gap": 0.25
+  },
+  {
+   "pos": 3651,
+   "ctx": "\\mathcal{V}_{g(q)}\\neq\\",
+   "ctx_page": 6,
+   "forced": "v",
+   "argmax": "emptyset",
+   "margin": 0.25,
+   "forced_gap": 0.25
+  },
+  {
+   "pos": 3683,
+   "ctx": "2)\n<BLOCK>text[114, ",
+   "ctx_page": 6,
+   "forced": "648",
+   "argmax": "649",
+   "margin": 1.0,
+   "forced_gap": 1.0
+  },
+  {
+   "pos": 3755,
+   "ctx": "onic intra-page coordinate:\n<BLOCK>equation[",
+   "ctx_page": 6,
+   "forced": "413",
+   "argmax": "412",
+   "margin": 1.25,
+   "forced_gap": 1.25
+  },
+  {
+   "pos": 3761,
+   "ctx": "equation[413, 723, ",
+   "ctx_page": 6,
+   "forced": "585",
+   "argmax": "584",
+   "margin": 0.75,
+   "forced_gap": 0.75
+  },
+  {
+   "pos": 3867,
+   "ctx": ", 796, 268, ",
+   "ctx_page": 6,
+   "forced": "812",
+   "argmax": "811",
+   "margin": 0.0,
+   "forced_gap": 0.0
+  }
+ ]
+}

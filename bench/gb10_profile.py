@@ -25,6 +25,7 @@ ap.add_argument("--kernels", action="store_true", help="torch.profiler over 60 d
 ap.add_argument("--kernels-start", type=int, default=3, help="decoder-call index where profiling starts (0=prefill)")
 ap.add_argument("--teacher", default=None, help="raw output file whose tokens are fed (teacher forcing, step-wise decode path)")
 ap.add_argument("--ngram", type=int, default=0)
+ap.add_argument("--crop", action="store_true", help="gundam mode (crop_mode=True); default base")
 a = ap.parse_args()
 tag = a.tag or f"p{a.pages}"
 os.makedirs(a.out, exist_ok=True)
@@ -90,7 +91,7 @@ log = io.StringIO()
 class Tee(io.TextIOBase):
     def write(self, s): log.write(s); return len(s)
     def flush(self): pass
-info = {"tag": tag, "pages": a.pages, "stream": a.stream, "max_new_tokens": a.max_new_tokens,
+info = {"tag": tag, "mode": "gundam" if a.crop else "base", "pages": a.pages, "stream": a.stream, "max_new_tokens": a.max_new_tokens,
         "gpu": torch.cuda.get_device_name(0), "torch": torch.__version__, "dtype": "bfloat16",
         "attn_implementation": getattr(model.config, "_attn_implementation", None)}
 
@@ -103,7 +104,7 @@ if a.teacher:
     prompt = "<PAGE><image>" * a.pages + "Multi page parsing."
     from PIL import Image
     imgs_pil = [Image.open(f).convert("RGB") for f in files]
-    input_ids, imgs, seq_mask, spatial = mod._uocr_build_inputs(tok, prompt, imgs_pil, crop_mode=False, base_size=1024, image_size=640, max_crops=16)
+    input_ids, imgs, seq_mask, spatial = mod._uocr_build_inputs(tok, prompt, imgs_pil, crop_mode=a.crop, base_size=1024, image_size=640, max_crops=16)
     dev = model.lm_head.weight.device
     ids = input_ids.unsqueeze(0).to(dev); S = ids.shape[1]
     kw = dict(images=[(imgs[0].to(dev), imgs[1].to(dev), spatial)], images_seq_mask=seq_mask.unsqueeze(0).to(dev), images_spatial_crop=spatial)
@@ -138,7 +139,7 @@ out_buf, err_buf = Tee(), Tee()
 sync(); t0 = time.time()
 with contextlib.redirect_stdout(out_buf), contextlib.redirect_stderr(err_buf):
     res = model.infer(tok, image_file=files, output_path="", save_results=False, eval_mode=not a.stream,
-                      crop_mode=False, max_new_tokens=a.max_new_tokens, no_repeat_ngram_size=a.ngram,
+                      crop_mode=a.crop, max_new_tokens=a.max_new_tokens, no_repeat_ngram_size=a.ngram,
                       ngram_window=1024 if a.ngram else 0, return_dict=True)
 sync(); wall = time.time() - t0
 n = len(res["token_ids"])
