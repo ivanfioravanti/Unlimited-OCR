@@ -1,0 +1,62 @@
+{
+  "device": "cuda",
+  "gpu": "NVIDIA GB10",
+  "backend": "sglang 0.5.20.dev10",
+  "mode": "base",
+  "dtype": "bfloat16",
+  "pages": 6,
+  "ngram_processor": false,
+  "runs": [
+    {
+      "run": 0,
+      "seconds": 27.93,
+      "prefill_s": 0.79,
+      "prompt_tokens": 1649,
+      "output_tokens": 3933,
+      "finish": "stop",
+      "tok_per_s": 140.82,
+      "decode_tok_per_s": 144.91,
+      "chunks": 3932,
+      "ms_per_chunk_quartiles": [
+        6.89,
+        6.89,
+        6.92,
+        6.91
+      ]
+    },
+    {
+      "run": 1,
+      "seconds": 27.87,
+      "prefill_s": 0.67,
+      "prompt_tokens": 1649,
+      "output_tokens": 3933,
+      "finish": "stop",
+      "tok_per_s": 141.11,
+      "decode_tok_per_s": 144.56,
+      "chunks": 3932,
+      "ms_per_chunk_quartiles": [
+        6.93,
+        6.91,
+        6.93,
+        6.92
+      ]
+    },
+    {
+      "run": 2,
+      "seconds": 27.89,
+      "prefill_s": 0.67,
+      "prompt_tokens": 1649,
+      "output_tokens": 3933,
+      "finish": "stop",
+      "tok_per_s": 141.01,
+      "decode_tok_per_s": 144.49,
+      "chunks": 3932,
+      "ms_per_chunk_quartiles": [
+        6.93,
+        6.91,
+        6.93,
+        6.92
+      ]
+    }
+  ]
+}

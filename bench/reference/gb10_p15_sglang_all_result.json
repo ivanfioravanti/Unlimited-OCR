@@ -1,0 +1,182 @@
+{
+ "p15_sgl_base": {
+  "device": "cuda",
+  "gpu": "NVIDIA GB10",
+  "backend": "sglang 0.5.20.dev10",
+  "mode": "base",
+  "dtype": "bfloat16",
+  "pages": 15,
+  "ngram_processor": false,
+  "runs": [
+   {
+    "run": 0,
+    "seconds": 452.99,
+    "prefill_s": 2.39,
+    "prompt_tokens": 3019,
+    "output_tokens": 60000,
+    "finish": "length",
+    "tok_per_s": 132.45,
+    "decode_tok_per_s": 133.16,
+    "chunks": 59893,
+    "ms_per_chunk_quartiles": [
+     7.61,
+     7.33,
+     7.26,
+     7.9
+    ]
+   },
+   {
+    "run": 1,
+    "seconds": 442.12,
+    "prefill_s": 1.83,
+    "prompt_tokens": 3019,
+    "output_tokens": 60000,
+    "finish": "length",
+    "tok_per_s": 135.71,
+    "decode_tok_per_s": 136.27,
+    "chunks": 59979,
+    "ms_per_chunk_quartiles": [
+     7.29,
+     7.26,
+     7.47,
+     7.35
+    ]
+   }
+  ]
+ },
+ "p15_sgl_gundam": {
+  "device": "cuda",
+  "gpu": "NVIDIA GB10",
+  "backend": "sglang 0.5.20.dev10",
+  "mode": "gundam",
+  "dtype": "bfloat16",
+  "pages": 15,
+  "ngram_processor": false,
+  "runs": [
+   {
+    "run": 0,
+    "seconds": 489.44,
+    "prefill_s": 8.25,
+    "prompt_tokens": 14615,
+    "output_tokens": 60000,
+    "finish": "length",
+    "tok_per_s": 122.59,
+    "decode_tok_per_s": 124.69,
+    "chunks": 14104,
+    "ms_per_chunk_quartiles": [
+     8.44,
+     7.59,
+     10.26,
+     7.35
+    ]
+   },
+   {
+    "run": 1,
+    "seconds": 468.31,
+    "prefill_s": 7.03,
+    "prompt_tokens": 14615,
+    "output_tokens": 60000,
+    "finish": "length",
+    "tok_per_s": 128.12,
+    "decode_tok_per_s": 130.07,
+    "chunks": 14245,
+    "ms_per_chunk_quartiles": [
+     8.03,
+     7.02,
+     9.46,
+     7.0
+    ]
+   }
+  ]
+ },
+ "p15_sgl_gundam_window10": {
+  "device": "cuda",
+  "gpu": "NVIDIA GB10",
+  "backend": "sglang 0.5.20.dev10",
+  "mode": "gundam",
+  "dtype": "bfloat16",
+  "pages": 15,
+  "ngram_processor": false,
+  "runs": [
+   {
+    "run": 0,
+    "seconds": 147.75,
+    "prefill_s": 3.58,
+    "prompt_tokens": 14615,
+    "output_tokens": 20000,
+    "finish": "length",
+    "tok_per_s": 135.36,
+    "decode_tok_per_s": 138.72,
+    "chunks": 14253,
+    "ms_per_chunk_quartiles": [
+     7.26,
+     6.98,
+     9.41,
+     6.98
+    ],
+    "last_visible_chunk_s": 112.75,
+    "visible_chunks": 14253
+   }
+  ]
+ },
+ "p15_sgl_base_nolimit": {
+  "device": "cuda",
+  "gpu": "NVIDIA GB10",
+  "backend": "sglang 0.5.20.dev10",
+  "mode": "base",
+  "dtype": "bfloat16",
+  "pages": 15,
+  "ngram_processor": false,
+  "runs": [
+   {
+    "run": 0,
+    "seconds": 139.88,
+    "prefill_s": 1.68,
+    "prompt_tokens": 4115,
+    "output_tokens": 20000,
+    "finish": "length",
+    "tok_per_s": 142.98,
+    "decode_tok_per_s": 144.72,
+    "chunks": 20000,
+    "ms_per_chunk_quartiles": [
+     6.91,
+     6.91,
+     6.91,
+     6.91
+    ],
+    "last_visible_chunk_s": 139.88,
+    "visible_chunks": 20000
+   }
+  ]
+ },
+ "p15_sgl_gundam_nolimit": {
+  "device": "cuda",
+  "gpu": "NVIDIA GB10",
+  "backend": "sglang 0.5.20.dev10",
+  "mode": "gundam",
+  "dtype": "bfloat16",
+  "pages": 15,
+  "ngram_processor": false,
+  "runs": [
+   {
+    "run": 0,
+    "seconds": 104.37,
+    "prefill_s": 4.71,
+    "prompt_tokens": 13565,
+    "output_tokens": 14304,
+    "finish": "stop",
+    "tok_per_s": 137.05,
+    "decode_tok_per_s": 143.53,
+    "chunks": 14303,
+    "ms_per_chunk_quartiles": [
+     6.95,
+     6.96,
+     6.97,
+     6.98
+    ],
+    "last_visible_chunk_s": 104.36,
+    "visible_chunks": 14303
+   }
+  ]
+ }
+}

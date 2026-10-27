@@ -31,7 +31,7 @@ os.makedirs(a.out, exist_ok=True)
 res = {"device": "cuda", "gpu": "NVIDIA GB10", "backend": "sglang 0.5.20.dev10", "mode": "gundam" if a.crop else "base",
        "dtype": "bfloat16", "pages": len(files), "ngram_processor": not a.no_ngram, "runs": []}
 for r in range(a.runs):
-    t = time.time(); ttft = None; chunks = []; usage = {}; finish = None
+    t = time.time(); ttft = None; chunks = []; stamps = []; usage = {}; finish = None
     resp = s.post(a.url + "/v1/chat/completions", json=payload, stream=True, timeout=6000); resp.raise_for_status()
     for line in resp.iter_lines(decode_unicode=True):
         if not line or not line.startswith("data:"): continue
@@ -43,10 +43,15 @@ for r in range(a.runs):
             x = (c.get("delta") or {}).get("content") or ""
             if x:
                 if ttft is None: ttft = time.time() - t
-                chunks.append(x)
+                chunks.append(x); stamps.append(time.time())
     dt = time.time() - t; n = usage.get("completion_tokens") or len(chunks)
     run = {"run": r, "seconds": round(dt, 2), "prefill_s": round(ttft, 2) if ttft else None, "prompt_tokens": usage.get("prompt_tokens"),
            "output_tokens": n, "finish": finish, "tok_per_s": round(n / dt, 2), "decode_tok_per_s": round(n / (dt - ttft), 2) if ttft else None}
+    if len(stamps) > 8:  # per-chunk timestamps: decode ms/chunk per quarter of the output (1 chunk ~ 1 token when chunks == completion_tokens)
+        q = len(stamps) // 4; iv = [(stamps[i] - stamps[i - 1]) * 1000 for i in range(1, len(stamps))]
+        qs = [iv[i * q:(i + 1) * q if i < 3 else None] for i in range(4)]
+        run["chunks"] = len(stamps); run["ms_per_chunk_quartiles"] = [round(sum(x) / len(x), 2) for x in qs]
+    if stamps: run["last_visible_chunk_s"] = round(stamps[-1] - t, 2); run["visible_chunks"] = len(stamps)
     res["runs"].append(run); print(run, flush=True)
     open(os.path.join(a.out, f"raw_run{r}.txt"), "w").write("".join(chunks))
 json.dump(res, open(os.path.join(a.out, "result.json"), "w"), indent=2)

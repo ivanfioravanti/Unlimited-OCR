@@ -1,0 +1,47 @@
+{
+ "tag": "rep_gundam_r2",
+ "mode": "gundam",
+ "pages": 6,
+ "stream": false,
+ "max_new_tokens": 24576,
+ "gpu": "NVIDIA GB10",
+ "torch": "2.13.0+cu130",
+ "dtype": "bfloat16",
+ "attn_implementation": "eager",
+ "finish": "stop",
+ "output_tokens": 4569,
+ "num_pages_out": 6,
+ "expected_pages": 6,
+ "prompt_tokens": 5429,
+ "total_wall_s": 154.54,
+ "infer_internal_time_s": 154.14,
+ "internal_prefill_to_first_token_s": 2.22,
+ "preprocess_s": 0.31,
+ "sam_s": 1.144,
+ "clip_s": 0.12,
+ "prefill_forward_s": 2.208,
+ "decode_forward_s": 143.62,
+ "decode_wall_s": 151.91,
+ "tok_per_s_total": 29.57,
+ "tok_per_s_decode_wall": 30.08,
+ "ms_per_token_forward_mean": 31.43,
+ "ms_per_token_wall_mean": 33.25,
+ "ms_per_token_forward_quartiles": [
+  28.47,
+  30.2,
+  32.31,
+  34.75
+ ],
+ "ms_per_token_wall_quartiles": [
+  30.28,
+  32.02,
+  34.13,
+  36.56
+ ],
+ "peak_mem_gb": 7.41,
+ "fallback_lines": 12,
+ "fallback_sample": [
+  "[DASH] Triton block-sparse path active (S=5429, block_size=32, remote_topk=12, local_window=128)"
+ ],
+ "cpu_params": 0
+}

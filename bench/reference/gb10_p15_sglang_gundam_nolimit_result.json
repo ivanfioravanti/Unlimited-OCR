@@ -1,0 +1,68 @@
+{
+  "device": "cuda",
+  "gpu": "NVIDIA GB10",
+  "backend": "sglang 0.5.20.dev10",
+  "mode": "gundam",
+  "dtype": "bfloat16",
+  "pages": 15,
+  "ngram_processor": false,
+  "runs": [
+    {
+      "run": 0,
+      "seconds": 104.36,
+      "prefill_s": 4.28,
+      "prompt_tokens": 13565,
+      "output_tokens": 14299,
+      "finish": "stop",
+      "tok_per_s": 137.02,
+      "decode_tok_per_s": 142.87,
+      "chunks": 14298,
+      "ms_per_chunk_quartiles": [
+        7.01,
+        6.99,
+        7.0,
+        6.99
+      ],
+      "last_visible_chunk_s": 104.35,
+      "visible_chunks": 14298
+    },
+    {
+      "run": 1,
+      "seconds": 105.4,
+      "prefill_s": 5.23,
+      "prompt_tokens": 13565,
+      "output_tokens": 14299,
+      "finish": "stop",
+      "tok_per_s": 135.66,
+      "decode_tok_per_s": 142.75,
+      "chunks": 14298,
+      "ms_per_chunk_quartiles": [
+        7.01,
+        7.0,
+        6.99,
+        7.02
+      ],
+      "last_visible_chunk_s": 105.39,
+      "visible_chunks": 14298
+    },
+    {
+      "run": 2,
+      "seconds": 104.06,
+      "prefill_s": 3.97,
+      "prompt_tokens": 13565,
+      "output_tokens": 14299,
+      "finish": "stop",
+      "tok_per_s": 137.41,
+      "decode_tok_per_s": 142.85,
+      "chunks": 14298,
+      "ms_per_chunk_quartiles": [
+        7.01,
+        7.0,
+        6.99,
+        7.0
+      ],
+      "last_visible_chunk_s": 104.05,
+      "visible_chunks": 14298
+    }
+  ]
+}

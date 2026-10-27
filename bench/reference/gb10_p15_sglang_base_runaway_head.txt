@@ -1,0 +1,49 @@
+<PAGE><BLOCK>header[117, 38, 396, 74]<FORK>Baidu 百度 | ERNIE
+<BLOCK>title<LEVEL1>[347, 135, 652, 155]<FORK>Unlimited OCR Works 2
+<BLOCK>text[200, 162, 797, 181]<FORK>Pioneering the OCR-3.0 Era: From Long- to Unlimited-Horizon Parsing
+<BLOCK>text[418, 212, 581, 227]<FORK>Baidu ERNIE Team
+<BLOCK>title<LEVEL2>[448, 274, 551, 291]<FORK>Abstract
+<BLOCK>text[113, 298, 886, 571]<FORK>Unlimited OCR ushers the era of long-horizon parsing, substantially mitigating the growth of working memory as document lengthens. However, as document length scales to hundreds of pages, the visual context grows substantially, sharply increasing the computational cost of each decoding step and limiting the scalability of ultra-long document parsing. Inspired by human book transcription via localized focus without re-scanning preceding pages, we introduce Unlimited OCR 2, a document parsing model that looks only at what it transcribes. Building on Unlimited OCR, we upgrade all the decoder attention modules to Sparse Reference Sliding Window Attention (SR-SWA), bounding active reference tokens to a fixed capacity and thus sustaining constant computational costs across arbitrarily long documents. By combining SR-SWA with Unlimited-Horizon Decoding Paradigm, Unlimited OCR 2 enables document parsing over virtually unlimited lengths without prohibitive memory overhead. At the hundred-page scale, Unlimited OCR 2 achieves 7.0× and 5.6× per-step speedups over Full Attention and R-SWA, respectively. Furthermore, it delivers state-of-the-art end-to-end performance on both MPDocBench and MarathonDocBench, our newly proposed benchmark targeting hundred-page document parsing. Ultimately, the capacity for uninterrupted, one-shot document parsing signifies a fundamental paradigm shift into the OCR 3.0 era.
+<BLOCK>image[202, 574, 473, 801]<FORK>
+<BLOCK>image[501, 574, 800, 801]<FORK>
+<BLOCK>image_caption[113, 809, 885, 859]<FORK>Figure 1 | R-SWA vs SR-SWA. R-SWA computes attention over all visual tokens across pages, inducing extreme visual redundancy; SR-SWA sparsely attends to relevant visual regions, aligning machine decoding with human reading intuition.
+<PAGE><BLOCK>title<LEVEL1>[115, 100, 210, 116]<FORK>Contents
+<BLOCK>title<LEVEL2>[117, 143, 884, 158]<FORK>1 Introduction 3
+<BLOCK>title<LEVEL2>[116, 178, 884, 193]<FORK>2 Related Works 4
+<BLOCK>text[143, 200, 884, 217]<FORK>2.1 VLM-based Document Parsing 4
+<BLOCK>text[143, 223, 885, 240]<FORK>2.2 Efficient Long-Context Modeling 4
+<BLOCK>other[143, 200, 885, 240]<FORK>
+<BLOCK>title<LEVEL2>[116, 259, 884, 275]<FORK>3 Methodology 4
+<BLOCK>text[143, 281, 884, 298]<FORK>3.1 Problem Setup 4
+<BLOCK>text[185, 303, 884, 320]<FORK>3.1.1 Unlimited-horizon Parsing 4
+<BLOCK>text[185, 326, 884, 342]<FORK>3.1.2 MarathonDocBench 5
+<BLOCK>other[185, 303, 884, 342]<FORK>
+<BLOCK>text[143, 349, 884, 364]<FORK>3.2 Architecture 5
+<BLOCK>text[143, 371, 884, 388]<FORK>3.3 Sparse Reference Sliding Window Attention 6
+<BLOCK>other[143, 349, 884, 388]<FORK>
+<BLOCK>text[185, 394, 884, 410]<FORK>3.3.1 Page Gate 6
+<BLOCK>text[185, 416, 884, 432]<FORK>3.3.2 Token Sieve 6
+<BLOCK>other[185, 394, 884, 432]<FORK>
+<BLOCK>text[143, 439, 884, 456]<FORK>3.4 Unlimited-Horizon Decoding Paradigm 7
+<BLOCK>title<LEVEL2>[116, 475, 884, 492]<FORK>4 Experimental Settings 8
+<BLOCK>text[143, 497, 884, 513]<FORK>4.1 Data Engine 8
+<BLOCK>text[143, 520, 884, 536]<FORK>4.2 Implementation Details 8
+<BLOCK>other[143, 497, 884, 536]<FORK>
+<BLOCK>title<LEVEL2>[116, 555, 884, 571]<FORK>5 Evaluation 9
+<BLOCK>text[143, 577, 884, 593]<FORK>5.1 Benchmarks and Metrics 9
+<BLOCK>text[143, 600, 884, 616]<FORK>5.2 Main Results 10
+<BLOCK>text[143, 622, 884, 639]<FORK>5.3 Scaling with Document Length 11
+<BLOCK>other[143, 577, 884, 639]<FORK>
+<BLOCK>text[185, 645, 884, 662]<FORK>5.3.1 Feasibility of Unlimited-horizon Parsing 11
+<BLOCK>text[185, 667, 884, 684]<FORK>5.3.2 Length-Invariant Accuracy 11
+<BLOCK>text[185, 690, 884, 707]<FORK>5.3.3 Constant Per-Step Decoding Latency 12
+<BLOCK>other[185, 645, 884, 707]<FORK>
+<BLOCK>title<LEVEL2>[116, 726, 884, 741]<FORK>6 Limitation and Future Work 12
+<BLOCK>title<LEVEL2>[116, 761, 884, 776]<FORK>7 Conclusion 12
+<BLOCK>title<LEVEL2>[116, 797, 884, 812]<FORK>8 Author List 13
+<BLOCK>page_number[493, 923, 506, 935]<FORK>2
+<PAGE><BLOCK>title<LEVEL2>[115, 100, 274, 116]<FORK>1. Introduction
+<BLOCK>text[160, 131, 838, 163]<FORK>“Pixels are my body, and tokens are my blood. I have parsed over a thousand pages. Unknown to KV cache. Nor known to context limits. So, as I pray: Unlimited OCR Works.”
+<BLOCK>text[528, 168, 838, 182]<FORK>Snarcv on huggingface (Adapted from UBW)
+<BLOCK>text[112, 187, 884, 381]<FORK>Document parsing is a key to the development of the new technology. The new technology is a key to the new technology. The new technology is a key to the new technology. The new technology is a key to the new technology. The new technology is a key to the new technology. The new technology is a key to the new technology. The new technology is a key to the new technology. The new technology is a key to the new technology. The new technology is a key to the new technology. The new technology is a key to the new technology. The new technology is a key to the new technology. The new technology is a key to the new technology. The new technology is a key to the new technology. The new technology is a key to the new technology. The new technology is a key to the new technology. The new technology is a key to the new technology. The new technology is a key to the new technology. The new technology is a key to the new technology. The new technology is a key to the new technology. The new technology is a key to the new technology. The new technology is a key to the new technology. The new technology is a key to the new technology. The new technology is a key to the new technology. The new technology is a key to the new technology. The new technology is a key to the new technology. The new technology is a key to the new technology. The new technology is a key to the new technology. The new technology is a key to the new technology. The new technology is a key to the new technology. The new technology is a key to the new technology. The new technology is a key to the new technology. The new technology is a key to the new technology. The new technology is a key to the new technology. The new technology is a key to the new technology. The new technology is a key to the new technology. The new technology is a key to the new technology. The new technology is a key to the new technology. The new technology is a key to the new technology. The new technology is a key to the new technology. The new technology is a key to the new technology. The new technology is a key to the new technology. The new technology is a key to the new technology. The new technology is a key to the new technology. The new technology is a key to the new technology. The new technology is a key to the new technology. The new technology is a key to the new technology. The new technology is a key to the new technology. The new technology is a key to the new technology. The new technology is a key to the new technology. The new technology is a key to the new technology. The new technology is a key to the new technology. The new technology is a key to the new technology. The new technology is a key to the new technology. The new technology is a key to the new technology. The new technology is a key to the new technology. The new technology is a key to the new technology. The new technology is a key to the new technology. The new technology is a key to the new technology. The new technology is a key to the new technology. The new technology is a key to the new technology. The new technology is a key to the new technology. The new technology is a key to the new technology. The new technology is a key to the new technology. The new technology is a key to the new technology. The new technology is a key to the new technolog
+[... truncated: run produced 287 KB, 3 <PAGE> markers, repeating "The new technology is a key to the new technology."]
