@@ -1,0 +1,114 @@
+{
+ "m3ultra/base/3": {
+  "pages": "PASS",
+  "no-loop": "PASS",
+  "prose": "PASS",
+  "canary": "PASS",
+  "words": "PASS"
+ },
+ "m3ultra/base/4": {
+  "pages": "PASS",
+  "no-loop": "PASS",
+  "prose": "PASS",
+  "canary": "FAIL",
+  "words": "WARN"
+ },
+ "m3ultra/base/5": {
+  "pages": "PASS",
+  "no-loop": "PASS",
+  "prose": "PASS",
+  "canary": "FAIL",
+  "words": "WARN"
+ },
+ "m3ultra/base/6": {
+  "pages": "PASS",
+  "no-loop": "PASS",
+  "prose": "PASS",
+  "canary": "FAIL",
+  "words": "WARN"
+ },
+ "m3ultra/gundam/3": {
+  "pages": "PASS",
+  "no-loop": "PASS",
+  "prose": "PASS",
+  "canary": "PASS",
+  "words": "PASS"
+ },
+ "m3ultra/gundam/4": {
+  "pages": "PASS",
+  "no-loop": "PASS",
+  "prose": "PASS",
+  "canary": "PASS",
+  "words": "PASS"
+ },
+ "m3ultra/gundam/5": {
+  "pages": "PASS",
+  "no-loop": "PASS",
+  "prose": "PASS",
+  "canary": "PASS",
+  "words": "PASS"
+ },
+ "m3ultra/gundam/6": {
+  "pages": "PASS",
+  "no-loop": "PASS",
+  "prose": "PASS",
+  "canary": "PASS",
+  "words": "PASS"
+ },
+ "m5max/base/3": {
+  "pages": "PASS",
+  "no-loop": "PASS",
+  "prose": "PASS",
+  "canary": "PASS",
+  "words": "PASS"
+ },
+ "m5max/base/4": {
+  "pages": "PASS",
+  "no-loop": "FAIL",
+  "prose": "FAIL",
+  "canary": "FAIL",
+  "words": "WARN"
+ },
+ "m5max/base/5": {
+  "pages": "PASS",
+  "no-loop": "PASS",
+  "prose": "PASS",
+  "canary": "FAIL",
+  "words": "WARN"
+ },
+ "m5max/base/6": {
+  "pages": "PASS",
+  "no-loop": "FAIL",
+  "prose": "FAIL",
+  "canary": "FAIL",
+  "words": "WARN"
+ },
+ "m5max/gundam/3": {
+  "pages": "PASS",
+  "no-loop": "PASS",
+  "prose": "PASS",
+  "canary": "PASS",
+  "words": "PASS"
+ },
+ "m5max/gundam/4": {
+  "pages": "PASS",
+  "no-loop": "PASS",
+  "prose": "PASS",
+  "canary": "PASS",
+  "words": "PASS"
+ },
+ "m5max/gundam/5": {
+  "pages": "PASS",
+  "no-loop": "PASS",
+  "prose": "PASS",
+  "canary": "PASS",
+  "words": "PASS"
+ },
+ "m5max/gundam/6": {
+  "pages": "PASS",
+  "no-loop": "PASS",
+  "prose": "PASS",
+  "canary": "PASS",
+  "words": "PASS"
+ }
+}

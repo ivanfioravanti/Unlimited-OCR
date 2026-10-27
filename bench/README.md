@@ -103,3 +103,10 @@ canary from 4 pages on both. MLX gundam passes at 6 pages on both Macs.
   not with the engine. Forcing only the first 20 native tokens (`mlx_prefix_force.py`, ties at output positions 7 and 13) makes MLX
   take the native branch (header `Baidu 百度 | ERNIE`, page 2 as 37 blocks) and then match the native document at 0.993-0.999 per-page text
   similarity (`reference/m3ultra_mlx_gundam_prefix20_raw.txt`). So neither layout is a port error.
+
+### Page-count sweep on the Macs (`mlx_sweep.py`, `reference/sweep_m3ultra`, `reference/sweep_m5max`, `reference/mlx_sweep_verdicts.json`)
+Pages 3-6 x {base, gundam}, one request per cell, scored with `check_quality.py`. M3 Ultra and M5 Max agree with the native engines cell for
+cell: base passes at 3 pages and fails the canary sentence from 4 pages on; gundam passes everywhere. With the generation guards on, the M5
+Max base runs at 4 and 6 pages no longer run away but still fail (the filler paragraph on page 3). Quality verdicts and the M3 Ultra timings
+are reliable; the **M5 Max timings in that sweep are not** (the laptop was in interactive use: 6-page gundam took 32 s against 21 s idle,
+with per-token time rising inside the request). Use the idle runs above for M5 Max speed.
