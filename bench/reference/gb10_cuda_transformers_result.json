@@ -1,0 +1,24 @@
+{
+  "device": "cuda",
+  "gpu": "NVIDIA GB10",
+  "torch": "2.13.0+cu130",
+  "dtype": "bfloat16",
+  "pages": 6,
+  "load_s": 18.1,
+  "runs": [
+    {
+      "run": 0,
+      "seconds": 108.51,
+      "output_tokens": 3934,
+      "tok_per_s": 36.26,
+      "peak_mem_gb": 6.83
+    },
+    {
+      "run": 1,
+      "seconds": 112.34,
+      "output_tokens": 3932,
+      "tok_per_s": 35.0,
+      "peak_mem_gb": 6.83
+    }
+  ]
+}
