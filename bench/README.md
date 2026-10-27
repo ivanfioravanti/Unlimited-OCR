@@ -145,3 +145,24 @@ GB10 SGLang base mode loops from page 3 at 15 pages in every configuration tried
 ### Post cards (`x_cards.html`, `x_cards/*.png`)
 `x_cards.html` holds the data for three 1600x900 cards (open `x_cards.html#c1`, `#c2` or `#c3` to see one card at exact size). The PNGs in `x_cards/`
 are 3200x1800 exports made with headless Chrome (`--force-device-scale-factor=2 --window-size=1600,900 --screenshot`).
+
+### Can the MLX port batch? Concurrency on the Macs (`mlx_concurrency.py`, `reference/mlx_concurrency/`)
+Not inside one process: the port's DASH attention raises `supports batch size 1` (`dash.py`), and mlx-vlm's generic `batch_generate` path does not
+accept this model's page-aware prompt (it fails even with one request: "image tokens in the prompt do not match the number of images").
+mlx-vlm's server has continuous batching in general, but that path needs batch support in the model, which this port does not have yet.
+What does work is several independent processes sharing the GPU. C identical 6-page gundam requests started together (n-gram rule off, as in the
+SGLang sweep; every worker loaded and warm before the start):
+
+| C | M3 Ultra aggregate tok/s (mean latency) | M5 Max aggregate tok/s (mean latency) | GB10 SGLang aggregate tok/s (mean latency) |
+|---|---|---|---|
+| 1 | 159.5 (25 s) | 193.4 (21 s) | 134.9 (34 s) |
+| 2 | 245.4 (33 s) | 259.5 (31 s) | n/a |
+| 4 | 319.5 (50 s) | 272.7 (58 s) | 474.0 (39 s) |
+| 8 | 329.9 (97 s) | 173.5 (183 s) | 549.7 (65 s) |
+| 16 | 325.9 (195 s) | not run (128 GB) | 658.6 (111 s) |
+
+The M3 Ultra roughly doubles its single-request throughput and then saturates near 330 tok/s; the M5 Max peaks at 273 with 4 processes and gets
+slower at 8 (cause not investigated: a laptop, ~10 GB per process, 8 processes use ~80 of 128 GB). SGLang keeps scaling to 659 (4.9x). So the
+DGX Spark's lead in aggregate throughput holds, at about 1.5x (C=4) to 2x (C=16) the M3 Ultra, but the Mac is not limited to one request at a time.
+In a first run of this sweep on the M3 Ultra, 1 of 4 and 2 of 16 workers produced no result (stderr was not captured, so the cause is unknown); the
+harness now records failed workers, and the re-run above had all 31 workers succeed. Only the re-run is reported.

@@ -1,0 +1,102 @@
+{
+ "pages": 6,
+ "mode": "gundam",
+ "ngram": false,
+ "sweep": [
+  {
+   "concurrency": 1,
+   "ok": 1,
+   "wall_s": 25.0,
+   "total_tokens": 3987,
+   "agg_tok_per_s": 159.5,
+   "latency_s": {
+    "min": 25.0,
+    "mean": 25.0,
+    "max": 25.0
+   },
+   "ttft_s_mean": 2.01,
+   "per_request_tok_per_s_mean": 159.5,
+   "finish": [
+    "stop"
+   ],
+   "requested": 1,
+   "failed": []
+  },
+  {
+   "concurrency": 2,
+   "ok": 2,
+   "wall_s": 32.5,
+   "total_tokens": 7974,
+   "agg_tok_per_s": 245.4,
+   "latency_s": {
+    "min": 32.49,
+    "mean": 32.5,
+    "max": 32.5
+   },
+   "ttft_s_mean": 3.24,
+   "per_request_tok_per_s_mean": 122.7,
+   "finish": [
+    "stop"
+   ],
+   "requested": 2,
+   "failed": []
+  },
+  {
+   "concurrency": 4,
+   "ok": 4,
+   "wall_s": 49.91,
+   "total_tokens": 15948,
+   "agg_tok_per_s": 319.5,
+   "latency_s": {
+    "min": 49.57,
+    "mean": 49.73,
+    "max": 49.91
+   },
+   "ttft_s_mean": 6.11,
+   "per_request_tok_per_s_mean": 80.2,
+   "finish": [
+    "stop"
+   ],
+   "requested": 4,
+   "failed": []
+  },
+  {
+   "concurrency": 8,
+   "ok": 8,
+   "wall_s": 96.68,
+   "total_tokens": 31896,
+   "agg_tok_per_s": 329.9,
+   "latency_s": {
+    "min": 96.29,
+    "mean": 96.52,
+    "max": 96.68
+   },
+   "ttft_s_mean": 12.0,
+   "per_request_tok_per_s_mean": 41.3,
+   "finish": [
+    "stop"
+   ],
+   "requested": 8,
+   "failed": []
+  },
+  {
+   "concurrency": 16,
+   "ok": 16,
+   "wall_s": 195.72,
+   "total_tokens": 63792,
+   "agg_tok_per_s": 325.9,
+   "latency_s": {
+    "min": 194.7,
+    "mean": 195.36,
+    "max": 195.72
+   },
+   "ttft_s_mean": 24.01,
+   "per_request_tok_per_s_mean": 20.4,
+   "finish": [
+    "stop"
+   ],
+   "requested": 16,
+   "failed": []
+  }
+ ]
+}
