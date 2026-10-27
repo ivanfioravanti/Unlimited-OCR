@@ -93,6 +93,13 @@ Please run on the same 6 JPEGs, greedy, bf16, **HF `infer_multi(crop_mode=True)`
    disagreement, the base-mode gap is the model being unsure on small text, not a port bug. If it shows some, say where: then we need a
    per-layer hidden-state dump at that step from both sides (I will write the MLX side to match).
 
+**Test to run on every raw output** (new): `python bench/check_quality.py <raw.txt> --pages N` prints PASS/FAIL per check and exits 1 on
+any FAIL: right number of `<PAGE>` markers, no repeated sentence, pages 2-3 similarity >= 0.99 to the PDF text, the page-3 canary
+sentence "Document parsing has undergone a major paradigm shift", and a WARN list of unexpected words. Known verdicts to calibrate against
+(`--pages 6`): MLX gundam (M3 Ultra, M5 Max) all PASS; MLX base and your HF base output FAIL the canary ("recessions have", "is having");
+the M5 Max base runaway fails pages, no-loop, prose and canary. At 3 pages, base mode passes. Put the verdict table for
+{HF, SGLang} x {base, gundam} x {3, 4, 5, 6 pages} in `bench/reference/gb10_gundam_checks.md`.
+
 ## Rules
 * Same inputs, base mode, greedy, bf16 (except task G, which is gundam). Quote tok/s together with the output token count (outputs differ in length, so compare rates not seconds).
 * Say what each timer includes. Report negative results too.
