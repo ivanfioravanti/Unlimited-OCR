@@ -1,0 +1,40 @@
+{
+  "device": "mps/metal (mlx)",
+  "gpu": "Apple M3 Ultra",
+  "mlx": "0.32.4",
+  "mlx_vlm": "0.7.11",
+  "dtype": "bfloat16",
+  "pages": 6,
+  "load_s": 0.6,
+  "memory_gb": 512,
+  "platform": "macOS-27.2-arm64-arm-64bit",
+  "runs": [
+    {
+      "run": 0,
+      "seconds": 26.55,
+      "output_tokens": 4566,
+      "tok_per_s": 171.96,
+      "peak_mem_gb": 8.95,
+      "prompt_tokens": 1649,
+      "prefill_s": 0.86,
+      "decode_tps": 177.69,
+      "finish_reason": "stop"
+    },
+    {
+      "run": 1,
+      "seconds": 26.42,
+      "output_tokens": 4566,
+      "tok_per_s": 172.81,
+      "peak_mem_gb": 8.95,
+      "prompt_tokens": 1649,
+      "prefill_s": 0.735,
+      "decode_tps": 177.73,
+      "finish_reason": "stop"
+    }
+  ],
+  "mlx_vlm_source": "Blaizzy/mlx-vlm PR #2601 (Unlimited-OCR-2: page2d RoPE + DASH sparse attention) @ 223c2980, not yet released",
+  "input": "bench/doc/page_1..6.jpg (prepare_doc.py, 150 dpi), base mode (no tiling), 1649 prompt tokens",
+  "decoding": "greedy (temperature 0), bf16 weights from baidu/Unlimited-OCR-2, no n-gram logit processor",
+  "timing_scope": "seconds = whole request wall time incl. image decode/preprocess + vision + prefill + decode (same scope as infer_multi); model load excluded. tok_per_s = output_tokens/seconds. prefill_s = time to first token (incl. preprocessing). decode_tps = decode-only. peak_mem_gb = mx.get_peak_memory()/2**30 (unified memory).",
+  "load_note": "load_s measured with the checkpoint already in the OS page cache; not comparable to a cold load"
+}

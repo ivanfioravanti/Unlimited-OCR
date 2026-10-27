@@ -1,0 +1,12 @@
+chars 16715 vs 18146; first differing char 25 (page 1, block 1)
+  ref  ...'<PAGE><BLOCK>header[117, 40, 396, 72]<FORK>\n<BLOCK>title<LEVEL1>[348, 135, 653, 156]<'
+  other...'<PAGE><BLOCK>header[117, 38, 396, 73]<FORK>Baidu 百度 | ERNIE\n<BLOCK>title<LEVEL1>[347,'
+tokens 3937 vs 4567; identical prefix 7; matched anywhere 3570 (90.7% of ref, 78.2% of other)
+
+page  blocks ref/other  text similarity  identical blocks  bbox |d| median/max px
+   1        8/9                   0.995         7/8                         1/316
+   2        3/35                  0.995         2/3                           1/2
+   3       10/11                  0.998         9/10                          1/2
+   4       14/13                  0.973         7/14                          1/2
+   5        8/10                  0.998         6/8                           1/5
+   6       15/14                  0.928         8/15                        1/247
