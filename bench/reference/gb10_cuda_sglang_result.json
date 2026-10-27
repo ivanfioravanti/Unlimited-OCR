@@ -1,0 +1,37 @@
+{
+  "device": "cuda",
+  "gpu": "NVIDIA GB10",
+  "backend": "sglang 0.5.20.dev10",
+  "mode": "base",
+  "dtype": "bfloat16",
+  "pages": 6,
+  "runs": [
+    {
+      "run": 0,
+      "seconds": 30.69,
+      "prefill_s": 1.54,
+      "prompt_tokens": 1649,
+      "output_tokens": 3933,
+      "tok_per_s": 128.16,
+      "decode_tok_per_s": 134.93
+    },
+    {
+      "run": 1,
+      "seconds": 29.81,
+      "prefill_s": 0.67,
+      "prompt_tokens": 1649,
+      "output_tokens": 3933,
+      "tok_per_s": 131.95,
+      "decode_tok_per_s": 135.0
+    },
+    {
+      "run": 2,
+      "seconds": 29.96,
+      "prefill_s": 0.75,
+      "prompt_tokens": 1649,
+      "output_tokens": 3933,
+      "tok_per_s": 131.27,
+      "decode_tok_per_s": 134.64
+    }
+  ]
+}

@@ -17,3 +17,8 @@ python bench/bench_transformers.py bench/doc --runs 2 --out bench/out_cuda   # C
 
 ## Reference (NVIDIA GB10 / DGX Spark, Transformers 4.52.1, torch 2.13+cu130, bf16)
 108.5 s / 3934 tokens = 36.3 tok/s (run 0), 112.3 s / 3932 tokens = 35.0 tok/s (run 1), 6.83 GB peak GPU mem, 18.1 s load.
+
+## SGLang reference (same GB10, wheel from `wheel/`, README server flags, base mode, 3 runs)
+~30 s / 3933 tokens = ~131 tok/s end-to-end (~135 tok/s decode), prefill/TTFT 0.7 s warm (1.5 s cold), 1649 prompt tokens. 3.7x the Transformers path.
+Output is 99.9% identical to the Transformers reference (first diff: one bbox coord). Server pre-allocates ~80 GB (`--mem-fraction-static 0.7` of unified memory), so memory is not comparable.
+Client: `python bench/bench_sglang.py bench/doc --runs 3` (needs the SGLang venv; the wheel in git is an LFS pointer, fetch the real file from GitHub).
