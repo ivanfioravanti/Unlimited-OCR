@@ -18,6 +18,7 @@ ap = argparse.ArgumentParser()
 ap.add_argument("doc"); ap.add_argument("--model", default="baidu/Unlimited-OCR-2")
 ap.add_argument("--pages", type=int, default=0)
 ap.add_argument("--runs", type=int, default=2); ap.add_argument("--out", default="bench_out_mlx")
+ap.add_argument("--cropping", action="store_true", help="gundam: tile every page (the official evaluation layout) instead of one 1024 base view")
 a = ap.parse_args()
 
 files = sorted(glob.glob(os.path.join(a.doc, "page_*.*")), key=lambda f: int(re.search(r"page_(\d+)", f).group(1)))
@@ -32,14 +33,15 @@ mx.eval(model.parameters()); load_s = time.perf_counter() - t0
 prompt = apply_chat_template(processor, model.config, "Multi page parsing.", num_images=len(files))
 sysctl = lambda k: subprocess.run(["sysctl", "-n", k], capture_output=True, text=True).stdout.strip()
 res = {"device": "mps/metal (mlx)", "gpu": sysctl("machdep.cpu.brand_string"), "mlx": mx.__version__,
-       "mlx_vlm": mlx_vlm.__version__, "dtype": "bfloat16", "pages": len(files), "load_s": round(load_s, 1),
+       "mlx_vlm": mlx_vlm.__version__, "dtype": "bfloat16", "mode": "gundam" if a.cropping else "base", "pages": len(files), "load_s": round(load_s, 1),
        "memory_gb": int(sysctl("hw.memsize")) // 2**30, "platform": platform.platform(), "runs": []}
 
 for r in range(a.runs):
     mx.reset_peak_memory()
     stamps, chunks, last = [], [], None
     t = time.perf_counter()
-    for g in stream_generate(model, processor, prompt, image=files, max_tokens=4096 * len(files), temperature=0.0):
+    for g in stream_generate(model, processor, prompt, image=files, max_tokens=4096 * len(files), temperature=0.0,
+                         **({"cropping": True} if a.cropping else {})):
         stamps.append(time.perf_counter()); chunks.append(g.text); last = g
     dt = time.perf_counter() - t
     n = last.generation_tokens

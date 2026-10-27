@@ -73,6 +73,26 @@ tokens, whether it ended on EOS or hit the cap, `<PAGE>` count (must equal N), `
 sentence verbatim. Questions: does the GB10 path ever loop? Does it glitch the same sentence at 4 and 5 pages? Is the glitch more
 frequent with more pages? Put the table in `bench/reference/gb10_page_sweep.md`.
 
+## G. Gundam mode (the official layout): does it fix the page-3 sentence on native too? (new, quality first)
+Your sweep showed the native engines write "is having undergone" at 4+ pages in **base** mode. On MLX the same request in **gundam**
+mode (every page tiled: 1024 global view + up to 16 640px tiles, `cropping=True`, what the README client sends with `crop_mode=True`) gives
+"Document parsing **has** undergone a major paradigm shift" (correct) at 6 and at 15 pages, and also removes garbage words on page 13.
+Both Macs produce the same content in gundam mode (text similarity 1.000 on all pages, 11 of 62 bbox coordinates differ by 1-2 px), while
+base mode differed between the two chips and looped on one of them. M3 Ultra gundam, 6 pages: 5429 prompt tokens, 3987 output tokens,
+25 s end to end (prefill 1.9 s); M5 Max 21 s. Files: `reference/{m3ultra,m5max}_mlx_gundam_{result.json,raw.txt}`.
+
+Please run on the same 6 JPEGs, greedy, bf16, **HF `infer_multi(crop_mode=True)` and SGLang with `images_config: {"crop_mode": true}`**:
+1. Page-3 first sentence verbatim at 3, 4, 5, 6 pages (HF and SGLang). Does the glitch disappear?
+2. `python bench/unknown_words.py <raw>` and `python bench/score_vs_pdf.py <raw>` (both new in this branch) on the 6-page output, next to
+   your base-mode numbers. For reference, MLX gundam: page 3 words absent from the PDF = `snarcv ubbw` only (a tiny italic line);
+   MLX base: `snarcv recessions`; your base output: `snarcv having` (page 3) and `recessing` (page 4).
+3. Tokens, finish reason, `<PAGE>` count, prefill and total time (gundam has ~3.3x more prompt tokens, so prefill matters).
+4. **Teacher-forced fidelity in gundam mode**: feed `reference/m3ultra_mlx_gundam_raw.txt` through your HF decode path (same as D4, which
+   gave 98.84% in base mode) and report the agreement and every disagreement where MLX's token trails your top choice by more than 3
+   logits, with context. The open question from D4 is the base-mode " recess"/" is" spot (10.3 logits); if gundam shows no confident text
+   disagreement, the base-mode gap is the model being unsure on small text, not a port bug. If it shows some, say where: then we need a
+   per-layer hidden-state dump at that step from both sides (I will write the MLX side to match).
+
 ## Rules
-* Same inputs, base mode, greedy, bf16. Quote tok/s together with the output token count (outputs differ in length, so compare rates not seconds).
+* Same inputs, base mode, greedy, bf16 (except task G, which is gundam). Quote tok/s together with the output token count (outputs differ in length, so compare rates not seconds).
 * Say what each timer includes. Report negative results too.

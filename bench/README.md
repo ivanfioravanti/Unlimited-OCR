@@ -51,3 +51,27 @@ reappear in order in the MLX output, but the identical prefix is only 7 tokens. 
 Both backends are greedy, but the CUDA reference is itself not run-to-run identical (3934 vs 3932 tokens), so some near-tie divergence is
 expected. This comparison cannot separate bf16 drift from a porting difference; a teacher-forced check (feed the reference tokens through
 the MLX model and compare argmax per position) would.
+
+## Quality: base mode vs gundam (mlx-vlm; Apple M3 Ultra and M5 Max)
+The 6-page protocol above uses base mode (one 1024 view per page), the auto policy for several pages. The official evaluation layout is
+**gundam**: each page tiled (1024 global view + up to 16 640px tiles). `python bench/bench_mlx.py bench/doc --cropping` runs it.
+Ground truth is the PDF's own text layer (`score_vs_pdf.py` = per-page similarity, `unknown_words.py` = words the output has but the page
+does not; a misread word shows up in the latter, the former barely moves).
+
+| 6 pages, M3 Ultra | base | gundam |
+|---|---|---|
+| page 3, first body sentence (PDF: "Document parsing **has** undergone...") | "recessions have undergone" | **"has undergone"** |
+| words absent from the PDF page, pages 1-6 | `hundred`, `snarcv recessions`, `cross`, `experts` | `hundred`, `snarcv ubbw`, `cross`, `experts` |
+| prompt tokens / output tokens | 1649 / 4566 | 5429 / 3987 |
+| whole request / decode-only | 26.5 s / 178 tok/s | 25.0 s / 171 tok/s (prefill 1.9 s) |
+
+* 15-page document, M3 Ultra: both modes finish with 15 pages. Words absent from the PDF: 10 (base) vs 8 (gundam); gundam fixes the page-3
+  sentence and page 13 (`alvettri dshattention` in base, clean in gundam). Time-to-first-token 1.9 s vs 5.1 s, total 84.5 s vs 86.9 s,
+  decode 174 vs 168 tok/s. Per-page similarity is within 0.009 everywhere (pages 9-10 are tables/figures and score low in both).
+* Hardware stability: in gundam mode the M3 Ultra and M5 Max outputs have identical content (text similarity 1.000 on all pages, 11 of 62
+  bbox coordinates differ by 1-2 px). In base mode they diverged on page 3 and, without the generation guards, the M5 Max looped.
+* The native engines (HF and SGLang on the GB10) also misread that sentence at 4+ pages in base mode, so base mode's resolution is the
+  limit, not only this port. Gundam on the native side: see `DGX_SPARK_TASKS.md` task G.
+* What gundam does not fix: the tiny italic attribution line on page 3 ("Snarcy on huggingface (Adapted from UBW)") is misread by every
+  engine and mode tried (`snarcv`, `ubbw`).
+* Scope: one document (this technical report), 15 pages. Treat it as evidence, not a benchmark.
