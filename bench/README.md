@@ -130,3 +130,18 @@ Whole request, prefill and image preprocessing included, greedy, bf16, `bench_ml
 Against SGLang on the GB10 (141 base, 135 gundam, n-gram off): 1.21x / 1.19x (M3 Ultra), 1.41x / 1.36x (M5 Max). Against HF eager (35 / 29.5): 4.9x to 6.2x.
 The M5 Max is a MacBook: its gundam runs fell from 192 to 175 tok/s over three back-to-back runs (heat), and `m5max_load_log.txt` shows the
 machine was nearly idle (WindowServer 26% falling to 4%). Earlier M5 Max runs on the pre-rewrite head gave 205.5 / 206.7 (base) and 176.3 / 188.6 (gundam).
+
+### 15 pages (M3 Ultra, PR head 95878139; `reference/sweep_m3ultra_p15/`, produced by `mlx_sweep.py ... --pages 15`)
+| mode | prompt / output tokens | finish | time to first token | total | tok/s | check_quality |
+|---|---|---|---|---|---|---|
+| base | 4115 / 14405 | stop, 15 pages | 1.8 s | 84.4 s | 170.7 | pages, no-loop, prose pass; canary fails (page-3 sentence) |
+| gundam | 13565 / 13759 | stop, 15 pages | 5.0 s | 87.6 s | 157.0 | all pass |
+
+Per-token time over the output: base 5.69 to 5.76 ms, gundam 5.79 to 6.13 ms (about +6% over 13.8k tokens, so close to flat but not exactly).
+GB10 SGLang, gundam, whole document in one window (`SGLANG_UOCR_EANABLE_DOC_LIMIT=0`): 14.3k tokens in 104.4 s (`benchmark-gb10-findings`).
+GB10 SGLang base mode loops from page 3 at 15 pages in every configuration tried with the n-gram rule off. The MLX run above had the n-gram rule on, so
+"MLX finishes where SGLang loops" is not yet a like-for-like comparison (it needs SGLang base at 15 pages with the n-gram processor on).
+
+### Post cards (`x_cards.html`, `x_cards/*.png`)
+`x_cards.html` holds the data for three 1600x900 cards (open `x_cards.html#c1`, `#c2` or `#c3` to see one card at exact size). The PNGs in `x_cards/`
+are 3200x1800 exports made with headless Chrome (`--force-device-scale-factor=2 --window-size=1600,900 --screenshot`).
