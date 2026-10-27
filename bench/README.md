@@ -75,3 +75,31 @@ does not; a misread word shows up in the latter, the former barely moves).
 * What gundam does not fix: the tiny italic attribution line on page 3 ("Snarcy on huggingface (Adapted from UBW)") is misread by every
   engine and mode tried (`snarcv`, `ubbw`).
 * Scope: one document (this technical report), 15 pages. Treat it as evidence, not a benchmark.
+
+## Cross-engine results, 6 pages (GB10 numbers from `benchmark-gb10-findings`; greedy, bf16, same JPEGs)
+Whole-request tokens/s (prefill included). Timers differ: HF = inside `infer()`, SGLang = HTTP POST to last token, MLX = in-process
+including image preprocessing. Output lengths differ by engine and run (the page-2 block layout, see below), so compare rates, not seconds.
+
+| engine | base | gundam | decode-only (base) |
+|---|---|---|---|
+| GB10, HF Transformers (eager) | 35 tok/s | 29.5 tok/s | ~26 ms/token (grows ~22% over the run) |
+| GB10, SGLang, n-gram off | 140 | 135 | ~6.9 ms/token |
+| GB10, SGLang, n-gram on | 129 | 122 | |
+| M3 Ultra, mlx-vlm, guards on | 168 | 157 | 5.6 ms/token (flat) |
+| M5 Max, mlx-vlm, guards on | 206 | 177-189 | ~4.8 ms/token |
+
+Native gundam passes `check_quality.py` at 3, 4, 5 and 6 pages on HF and SGLang (re-run independently from the raw files); native base fails the
+canary from 4 pages on both. MLX gundam passes at 6 pages on both Macs.
+
+### Fidelity of the MLX port, gundam mode
+* Native HF tokens through MLX (`mlx_teacher_forced.py`): 98.84% overall; bbox-coordinate tokens 95.69% (47 of 1091), **all other tokens
+  99.83%** (6 of 3479), largest text gap 2.25 logits, none above 3 (`reference/m3ultra_mlx_teacher_forced_vs_hf_gundam.txt`).
+* MLX tokens through native HF (GB10 side): 98.42% overall, 60 of 63 disagreements are bbox digits; the same split gives **99.91%** on the
+  other 3261 tokens (3 disagreements, gaps 1.6 / 0.5 / 0.25). One bbox digit trails by 4.5 logits (a tie at the top, page-5 chart).
+  Overall agreement is dominated by bbox digits (18% of positions, +-1-2 px), so the text/structure rate is the meaningful number.
+* One small text difference: MLX gundam writes "Adapted from U**BB**W" where native HF and SGLang write "UBW" (native prefers it by 1.2-1.6
+  logits). MLX base mode reads it correctly. The "Snarcv" (for "Snarcy") misread is shared by every engine and mode.
+* The page-1 header and page-2 table of contents flip between "empty header, 3 blocks" and "Baidu header, 35 blocks" with the (mode, run),
+  not with the engine. Forcing only the first 20 native tokens (`mlx_prefix_force.py`, ties at output positions 7 and 13) makes MLX
+  take the native branch (header `Baidu 百度 | ERNIE`, page 2 as 37 blocks) and then match the native document at 0.993-0.999 per-page text
+  similarity (`reference/m3ultra_mlx_gundam_prefix20_raw.txt`). So neither layout is a port error.
