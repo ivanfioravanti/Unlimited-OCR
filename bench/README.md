@@ -118,3 +118,15 @@ processor tests); all 8 M3 Ultra and all 8 M5 Max sweep outputs (pages 3-6, base
 the same verdicts; native HF gundam tokens through MLX give the same 98.84% overall / 99.83% on text tokens. Across chips, gundam content is
 identical at every page count (3-6; only 5-11 bbox digits differ by 1-2 px) while base content differs on every page count. M5 Max timings in
 that re-run are not usable (the laptop was under heavy load: gundam at 3 pages took 33 s instead of 9 s).
+
+### Speed re-measured on the PR head (mlx-vlm PR #2601 @ 95878139), 6 pages, 3 runs each (`reference/pr_head_95878139/`)
+Whole request, prefill and image preprocessing included, greedy, bf16, `bench_mlx.py` (add `--cropping` for gundam).
+
+| | base tok/s (runs) | gundam tok/s (runs) | decode-only |
+|---|---|---|---|
+| M3 Ultra | 170.4 (170.1, 170.5, 170.6) | 160.4 (160.3, 160.6, 160.5) | 5.7 ms/token |
+| M5 Max | 199.2 (195.5, 201.2, 201.0) | 184.3 (192.3, 185.3, 175.1) | 4.9 / 5.1 ms/token |
+
+Against SGLang on the GB10 (141 base, 135 gundam, n-gram off): 1.21x / 1.19x (M3 Ultra), 1.41x / 1.36x (M5 Max). Against HF eager (35 / 29.5): 4.9x to 6.2x.
+The M5 Max is a MacBook: its gundam runs fell from 192 to 175 tok/s over three back-to-back runs (heat), and `m5max_load_log.txt` shows the
+machine was nearly idle (WindowServer 26% falling to 4%). Earlier M5 Max runs on the pre-rewrite head gave 205.5 / 206.7 (base) and 176.3 / 188.6 (gundam).

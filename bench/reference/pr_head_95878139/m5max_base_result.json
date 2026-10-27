@@ -1,0 +1,49 @@
+{
+  "device": "mps/metal (mlx)",
+  "gpu": "Apple M5 Max",
+  "mlx": "0.32.4",
+  "mlx_vlm": "0.7.11",
+  "dtype": "bfloat16",
+  "mode": "base",
+  "pages": 6,
+  "load_s": 0.7,
+  "memory_gb": 128,
+  "platform": "macOS-27.2-arm64-arm-64bit",
+  "runs": [
+    {
+      "run": 0,
+      "seconds": 22.61,
+      "output_tokens": 4419,
+      "tok_per_s": 195.47,
+      "peak_mem_gb": 8.95,
+      "prompt_tokens": 1649,
+      "prefill_s": 0.516,
+      "decode_tps": 200.01,
+      "finish_reason": "stop"
+    },
+    {
+      "run": 1,
+      "seconds": 21.97,
+      "output_tokens": 4419,
+      "tok_per_s": 201.18,
+      "peak_mem_gb": 8.95,
+      "prompt_tokens": 1649,
+      "prefill_s": 0.474,
+      "decode_tps": 205.6,
+      "finish_reason": "stop"
+    },
+    {
+      "run": 2,
+      "seconds": 21.99,
+      "output_tokens": 4419,
+      "tok_per_s": 200.99,
+      "peak_mem_gb": 8.95,
+      "prompt_tokens": 1649,
+      "prefill_s": 0.482,
+      "decode_tps": 205.47,
+      "finish_reason": "stop"
+    }
+  ],
+  "mlx_vlm_source": "Blaizzy/mlx-vlm PR #2601 @ 95878139 (includes the generation guards)",
+  "protocol": "bench/bench_mlx.py, 6 JPEG pages, 3 runs, greedy, bf16"
+}
