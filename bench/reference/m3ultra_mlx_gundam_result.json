@@ -1,0 +1,40 @@
+{
+  "device": "mps/metal (mlx)",
+  "gpu": "Apple M3 Ultra",
+  "mlx": "0.32.4",
+  "mlx_vlm": "0.7.11",
+  "dtype": "bfloat16",
+  "mode": "gundam",
+  "pages": 6,
+  "load_s": 0.6,
+  "memory_gb": 512,
+  "platform": "macOS-27.2-arm64-arm-64bit",
+  "runs": [
+    {
+      "run": 0,
+      "seconds": 25.04,
+      "output_tokens": 3987,
+      "tok_per_s": 159.24,
+      "peak_mem_gb": 10.17,
+      "prompt_tokens": 5429,
+      "prefill_s": 1.965,
+      "decode_tps": 172.77,
+      "finish_reason": "stop"
+    },
+    {
+      "run": 1,
+      "seconds": 25.5,
+      "output_tokens": 3987,
+      "tok_per_s": 156.33,
+      "peak_mem_gb": 10.18,
+      "prompt_tokens": 5429,
+      "prefill_s": 1.914,
+      "decode_tps": 168.98,
+      "finish_reason": "stop"
+    }
+  ],
+  "mlx_vlm_source": "Blaizzy/mlx-vlm PR #2601 @ 223c2980 + generation guards 114b8471 (ivanfioravanti/mlx-vlm uocr2-generation-guards)",
+  "input": "bench/doc/page_1..6.jpg (prepare_doc.py, 150 dpi), gundam mode (cropping=True: 1024 global view + up to 16 640px tiles per page), 5429 prompt tokens",
+  "decoding": "greedy (temperature 0), bf16 weights from baidu/Unlimited-OCR-2, default guards (page-count guard + no-repeat n-gram 35/1024)",
+  "timing_scope": "seconds = whole request wall time incl. image decode/preprocess + vision + prefill + decode; model load excluded. tok_per_s = output_tokens/seconds. prefill_s = time to first token (incl. preprocessing). decode_tps = decode-only."
+}
