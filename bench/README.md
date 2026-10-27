@@ -110,3 +110,11 @@ cell: base passes at 3 pages and fails the canary sentence from 4 pages on; gund
 Max base runs at 4 and 6 pages no longer run away but still fail (the filler paragraph on page 3). Quality verdicts and the M3 Ultra timings
 are reliable; the **M5 Max timings in that sweep are not** (the laptop was in interactive use: 6-page gundam took 32 s against 21 s idle,
 with per-token time rising inside the request). Use the idle runs above for M5 Max speed.
+
+### Re-test on the updated PR head (mlx-vlm PR #2601 @ 95878139, which now contains the generation guards)
+The PR author cherry-picked the guards and README commits (tree identical to our `uocr2-generation-guards` branch) and rewrote the PR history
+underneath. Everything was re-run from that head on both Macs: unit tests pass (Unlimited-OCR model and guard tests, 537 in `test_generate.py`,
+processor tests); all 8 M3 Ultra and all 8 M5 Max sweep outputs (pages 3-6, base and gundam) are **byte-identical** to the earlier sweeps, with
+the same verdicts; native HF gundam tokens through MLX give the same 98.84% overall / 99.83% on text tokens. Across chips, gundam content is
+identical at every page count (3-6; only 5-11 bbox digits differ by 1-2 px) while base content differs on every page count. M5 Max timings in
+that re-run are not usable (the laptop was under heavy load: gundam at 3 pages took 33 s instead of 9 s).
