@@ -29,7 +29,7 @@ t0 = time.perf_counter()
 model, processor = load(os.path.expanduser(a.model))  # weights stay in the checkpoint dtype (bf16)
 mx.eval(model.parameters()); load_s = time.perf_counter() - t0
 
-# Task text only: the processor expands it to "<PAGE><image>" * n + "Multi page parsing." (base mode for >1 page).
+# Task text only: the processor expands it to "<PAGE><image>" * n + "Multi page parsing." (base mode unless --cropping; the flag is always passed explicitly).
 prompt = apply_chat_template(processor, model.config, "Multi page parsing.", num_images=len(files))
 sysctl = lambda k: subprocess.run(["sysctl", "-n", k], capture_output=True, text=True).stdout.strip()
 res = {"device": "mps/metal (mlx)", "gpu": sysctl("machdep.cpu.brand_string"), "mlx": mx.__version__,
@@ -41,7 +41,7 @@ for r in range(a.runs):
     stamps, chunks, last = [], [], None
     t = time.perf_counter()
     for g in stream_generate(model, processor, prompt, image=files, max_tokens=4096 * len(files), temperature=0.0,
-                         **({"cropping": True} if a.cropping else {})):
+                         cropping=a.cropping):  # explicit: mlx-vlm main tiles by default, so base mode must be asked for
         stamps.append(time.perf_counter()); chunks.append(g.text); last = g
     dt = time.perf_counter() - t
     n = last.generation_tokens

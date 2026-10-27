@@ -1,0 +1,151 @@
+{
+ "mlx": "0.32.4",
+ "mlx_vlm": "0.7.11",
+ "platform": "macOS-27.2-arm64-arm-64bit",
+ "rows": [
+  {
+   "chip": "Apple M3 Ultra",
+   "mode": "base",
+   "pages": 3,
+   "prompt_tokens": 827,
+   "output_tokens": 2235,
+   "finish": "stop",
+   "ttft_s": 0.39,
+   "total_s": 12.9,
+   "tok_per_s": 173.3,
+   "decode_tps": 178.6,
+   "quartile_ms_per_token": [
+    5.61,
+    5.58,
+    5.61,
+    5.59
+   ]
+  },
+  {
+   "chip": "Apple M3 Ultra",
+   "mode": "base",
+   "pages": 4,
+   "prompt_tokens": 1101,
+   "output_tokens": 3208,
+   "finish": "stop",
+   "ttft_s": 0.53,
+   "total_s": 18.49,
+   "tok_per_s": 173.5,
+   "decode_tps": 178.6,
+   "quartile_ms_per_token": [
+    5.59,
+    5.58,
+    5.61,
+    5.62
+   ]
+  },
+  {
+   "chip": "Apple M3 Ultra",
+   "mode": "base",
+   "pages": 5,
+   "prompt_tokens": 1375,
+   "output_tokens": 3846,
+   "finish": "stop",
+   "ttft_s": 0.63,
+   "total_s": 22.16,
+   "tok_per_s": 173.5,
+   "decode_tps": 178.6,
+   "quartile_ms_per_token": [
+    5.59,
+    5.58,
+    5.61,
+    5.61
+   ]
+  },
+  {
+   "chip": "Apple M3 Ultra",
+   "mode": "base",
+   "pages": 6,
+   "prompt_tokens": 1649,
+   "output_tokens": 4566,
+   "finish": "stop",
+   "ttft_s": 0.73,
+   "total_s": 26.38,
+   "tok_per_s": 173.1,
+   "decode_tps": 177.9,
+   "quartile_ms_per_token": [
+    5.6,
+    5.62,
+    5.62,
+    5.64
+   ]
+  },
+  {
+   "chip": "Apple M3 Ultra",
+   "mode": "gundam",
+   "pages": 3,
+   "prompt_tokens": 2717,
+   "output_tokens": 1693,
+   "finish": "stop",
+   "ttft_s": 0.97,
+   "total_s": 10.45,
+   "tok_per_s": 162.1,
+   "decode_tps": 178.5,
+   "quartile_ms_per_token": [
+    5.6,
+    5.59,
+    5.6,
+    5.61
+   ]
+  },
+  {
+   "chip": "Apple M3 Ultra",
+   "mode": "gundam",
+   "pages": 4,
+   "prompt_tokens": 3621,
+   "output_tokens": 2643,
+   "finish": "stop",
+   "ttft_s": 1.27,
+   "total_s": 16.11,
+   "tok_per_s": 164.0,
+   "decode_tps": 178.0,
+   "quartile_ms_per_token": [
+    5.6,
+    5.63,
+    5.61,
+    5.63
+   ]
+  },
+  {
+   "chip": "Apple M3 Ultra",
+   "mode": "gundam",
+   "pages": 5,
+   "prompt_tokens": 4525,
+   "output_tokens": 3282,
+   "finish": "stop",
+   "ttft_s": 1.61,
+   "total_s": 20.09,
+   "tok_per_s": 163.4,
+   "decode_tps": 177.6,
+   "quartile_ms_per_token": [
+    5.6,
+    5.64,
+    5.64,
+    5.64
+   ]
+  },
+  {
+   "chip": "Apple M3 Ultra",
+   "mode": "gundam",
+   "pages": 6,
+   "prompt_tokens": 5429,
+   "output_tokens": 3987,
+   "finish": "stop",
+   "ttft_s": 1.9,
+   "total_s": 24.63,
+   "tok_per_s": 161.9,
+   "decode_tps": 175.3,
+   "quartile_ms_per_token": [
+    5.6,
+    5.62,
+    5.65,
+    5.94
+   ]
+  }
+ ]
+}

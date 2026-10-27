@@ -1,0 +1,49 @@
+{
+  "device": "mps/metal (mlx)",
+  "gpu": "Apple M3 Ultra",
+  "mlx": "0.32.4",
+  "mlx_vlm": "0.7.11",
+  "dtype": "bfloat16",
+  "mode": "base",
+  "pages": 6,
+  "load_s": 0.6,
+  "memory_gb": 512,
+  "platform": "macOS-27.2-arm64-arm-64bit",
+  "runs": [
+    {
+      "run": 0,
+      "seconds": 26.2,
+      "output_tokens": 4566,
+      "tok_per_s": 174.25,
+      "peak_mem_gb": 8.95,
+      "prompt_tokens": 1649,
+      "prefill_s": 0.796,
+      "decode_tps": 179.68,
+      "finish_reason": "stop"
+    },
+    {
+      "run": 1,
+      "seconds": 26.01,
+      "output_tokens": 4566,
+      "tok_per_s": 175.55,
+      "peak_mem_gb": 8.95,
+      "prompt_tokens": 1649,
+      "prefill_s": 0.728,
+      "decode_tps": 180.57,
+      "finish_reason": "stop"
+    },
+    {
+      "run": 2,
+      "seconds": 26.01,
+      "output_tokens": 4566,
+      "tok_per_s": 175.55,
+      "peak_mem_gb": 8.95,
+      "prompt_tokens": 1649,
+      "prefill_s": 0.729,
+      "decode_tps": 180.58,
+      "finish_reason": "stop"
+    }
+  ],
+  "mlx_vlm_source": "main @ 5061bd7f (Blaizzy/mlx-vlm, PR #2601 merged)",
+  "protocol": "bench/bench_mlx.py, 6 JPEG pages, greedy, bf16, cropping passed explicitly; no generation guards on main"
+}

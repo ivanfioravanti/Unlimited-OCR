@@ -35,7 +35,7 @@ def force(tokens, logits):
 
 out = []
 for g in stream_generate(model, processor, prompt, image=files, max_tokens=4096 * a.pages, temperature=0.0,
-                         logits_processors=[force], **({"cropping": True} if a.cropping else {})):
+                         logits_processors=[force], cropping=a.cropping):
     out.append(g.text)
 open(a.out, "w").write("".join(out))
 print(f"K={a.k} tokens={g.generation_tokens} finish={g.finish_reason} <PAGE>={''.join(out).count('<PAGE>')}")

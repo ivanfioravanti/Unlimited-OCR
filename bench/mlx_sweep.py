@@ -14,6 +14,7 @@ from mlx_vlm.prompt_utils import apply_chat_template
 ap = argparse.ArgumentParser()
 ap.add_argument("doc"); ap.add_argument("model"); ap.add_argument("out")
 ap.add_argument("--pages", type=int, nargs="+", default=[3, 4, 5, 6])
+ap.add_argument("--max-tokens-per-page", type=int, default=4096, help="output cap per page (a runaway stops here)")
 a = ap.parse_args()
 os.makedirs(a.out, exist_ok=True)
 model, processor = load(os.path.expanduser(a.model))
@@ -29,8 +30,8 @@ rows = []
 for mode in ("base", "gundam"):
     for n in a.pages:
         stamps, chunks, t = [], [], time.perf_counter()
-        for g in stream_generate(model, processor, prompt(n), image=files(n), max_tokens=4096 * n, temperature=0.0,
-                                 **({"cropping": True} if mode == "gundam" else {})):
+        for g in stream_generate(model, processor, prompt(n), image=files(n), max_tokens=a.max_tokens_per_page * n, temperature=0.0,
+                                 cropping=(mode == "gundam")):  # explicit in both modes: main tiles by default
             stamps.append(time.perf_counter()); chunks.append(g.text)
         total = stamps[-1] - t
         gaps = [y - x for x, y in zip(stamps, stamps[1:])]

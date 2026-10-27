@@ -22,7 +22,8 @@ def worker(go_path):
     model, processor = load(os.path.expanduser(a.model))
     files = [os.path.join(a.doc, f"page_{i}.jpg") for i in range(1, a.pages + 1)]
     prompt = apply_chat_template(processor, model.config, "Multi page parsing.", num_images=a.pages)
-    kw = dict(temperature=0.0, no_repeat_ngram_size=0, **({"cropping": True} if a.cropping else {}))
+    # builds with model-owned generation guards (the old PR head) get the n-gram rule switched off; main has no guards
+    kw = dict(temperature=0.0, cropping=a.cropping, **({"no_repeat_ngram_size": 0} if hasattr(model, "make_generation_guards") else {}))
     for _ in stream_generate(model, processor, prompt, image=files, max_tokens=24, **kw):  # warm up
         pass
     print("READY", flush=True)

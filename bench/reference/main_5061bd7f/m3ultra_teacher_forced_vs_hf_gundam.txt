@@ -1,0 +1,13 @@
+reference tokens=4570  decode(encode(text)) == text: True
+forced 4570 steps in 36s
+agreement overall      98.84%  (53 disagreements)
+agreement bbox tokens  95.69%  (47 of 1091)
+agreement other tokens 99.83%  (6 of 3479)   <- text and structure
+text/structure disagreements (position, reference token, MLX top choice, reference token's gap below MLX top, context):
+    332  ref='7'            mlx=' $'           gap= 0.12  ...' Unlimited OCR 2 achieves '
+    370  ref=' M'           mlx=' MP'          gap= 0.50  ...' end-to-end performance on both'
+   1429  ref='BW'           mlx='BB'           gap= 1.25  ...'face (Adapted from U'
+   3059  ref='text'         mlx='operatorname' gap= 0.88  ...' _ {t} = \\'
+   3291  ref=' M'           mlx=' MP'          gap= 1.62  ...'2 | MarathonDocBench versus'
+   4221  ref='B'            mlx='G'            gap= 2.25  ...'b \\mid \\mathcal {'
+largest gap among text disagreements: 2.25 logits; among bbox: 5.75

@@ -1,0 +1,151 @@
+{
+ "mlx": "0.32.4",
+ "mlx_vlm": "0.7.11",
+ "platform": "macOS-27.2-arm64-arm-64bit",
+ "rows": [
+  {
+   "chip": "Apple M5 Max",
+   "mode": "base",
+   "pages": 3,
+   "prompt_tokens": 827,
+   "output_tokens": 2237,
+   "finish": "stop",
+   "ttft_s": 0.26,
+   "total_s": 11.33,
+   "tok_per_s": 197.4,
+   "decode_tps": 201.8,
+   "quartile_ms_per_token": [
+    4.86,
+    5.0,
+    5.05,
+    4.92
+   ]
+  },
+  {
+   "chip": "Apple M5 Max",
+   "mode": "base",
+   "pages": 4,
+   "prompt_tokens": 1101,
+   "output_tokens": 6000,
+   "finish": "length",
+   "ttft_s": 0.33,
+   "total_s": 29.98,
+   "tok_per_s": 200.1,
+   "decode_tps": 202.3,
+   "quartile_ms_per_token": [
+    4.85,
+    4.95,
+    4.99,
+    4.99
+   ]
+  },
+  {
+   "chip": "Apple M5 Max",
+   "mode": "base",
+   "pages": 5,
+   "prompt_tokens": 1375,
+   "output_tokens": 3846,
+   "finish": "stop",
+   "ttft_s": 0.42,
+   "total_s": 18.85,
+   "tok_per_s": 204.1,
+   "decode_tps": 208.6,
+   "quartile_ms_per_token": [
+    4.81,
+    4.79,
+    4.79,
+    4.79
+   ]
+  },
+  {
+   "chip": "Apple M5 Max",
+   "mode": "base",
+   "pages": 6,
+   "prompt_tokens": 1649,
+   "output_tokens": 9000,
+   "finish": "length",
+   "ttft_s": 0.48,
+   "total_s": 46.02,
+   "tok_per_s": 195.6,
+   "decode_tps": 197.6,
+   "quartile_ms_per_token": [
+    4.77,
+    4.9,
+    5.18,
+    5.39
+   ]
+  },
+  {
+   "chip": "Apple M5 Max",
+   "mode": "gundam",
+   "pages": 3,
+   "prompt_tokens": 2717,
+   "output_tokens": 1693,
+   "finish": "stop",
+   "ttft_s": 0.62,
+   "total_s": 9.08,
+   "tok_per_s": 186.4,
+   "decode_tps": 200.0,
+   "quartile_ms_per_token": [
+    5.13,
+    4.95,
+    4.99,
+    4.93
+   ]
+  },
+  {
+   "chip": "Apple M5 Max",
+   "mode": "gundam",
+   "pages": 4,
+   "prompt_tokens": 3621,
+   "output_tokens": 2643,
+   "finish": "stop",
+   "ttft_s": 0.81,
+   "total_s": 14.31,
+   "tok_per_s": 184.7,
+   "decode_tps": 195.7,
+   "quartile_ms_per_token": [
+    4.89,
+    4.85,
+    5.82,
+    4.87
+   ]
+  },
+  {
+   "chip": "Apple M5 Max",
+   "mode": "gundam",
+   "pages": 5,
+   "prompt_tokens": 4525,
+   "output_tokens": 3282,
+   "finish": "stop",
+   "ttft_s": 1.04,
+   "total_s": 17.01,
+   "tok_per_s": 193.0,
+   "decode_tps": 205.5,
+   "quartile_ms_per_token": [
+    4.89,
+    4.85,
+    4.86,
+    4.86
+   ]
+  },
+  {
+   "chip": "Apple M5 Max",
+   "mode": "gundam",
+   "pages": 6,
+   "prompt_tokens": 5429,
+   "output_tokens": 3987,
+   "finish": "stop",
+   "ttft_s": 1.6,
+   "total_s": 21.32,
+   "tok_per_s": 187.0,
+   "decode_tps": 202.1,
+   "quartile_ms_per_token": [
+    4.79,
+    4.91,
+    4.98,
+    5.11
+   ]
+  }
+ ]
+}

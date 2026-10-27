@@ -166,3 +166,33 @@ slower at 8 (cause not investigated: a laptop, ~10 GB per process, 8 processes u
 DGX Spark's lead in aggregate throughput holds, at about 1.5x (C=4) to 2x (C=16) the M3 Ultra, but the Mac is not limited to one request at a time.
 In a first run of this sweep on the M3 Ultra, 1 of 4 and 2 of 16 workers produced no result (stderr was not captured, so the cause is unknown); the
 harness now records failed workers, and the re-run above had all 31 workers succeed. Only the re-run is reported.
+
+## Results on mlx-vlm main (5061bd7f, PR #2601 merged on 2026-10-27) (`reference/main_5061bd7f/`)
+**Main is not the PR head we tested before (95878139).** Before merging, the maintainer added two commits: `00b1ca91` removed our generation guards and the
+`generate_step` hook ("no model-specific generation guards are installed automatically"; callers can still pass `logits_processors`), and `c3ae82e2` made
+**tiled (Gundam) pages the default for every page count** and added uniform KV-cache quantization (`--kv-bits`). Everything below was re-run on main on both
+Macs. The scripts now pass `cropping` explicitly (main would otherwise silently run "base" tests in Gundam mode) and only pass guard kwargs when the
+build has them. Unit tests on main: 19 Unlimited-OCR model tests, 21 processor tests, 536 in `test_generate.py`, all pass.
+
+| 6 pages, whole request, tok/s | base (opt-in, `cropping=False`) | Gundam (default) |
+|---|---|---|
+| M3 Ultra, 3 runs | 175.1 (174.3, 175.6, 175.6), decode 5.55 ms/token | 164.4 (165.1, 165.2, 162.8), decode 5.60 ms/token |
+| M5 Max, 3 runs | **runs away**: 24,576 tokens, 122 s, no EOS | 189.1 (190.0, 194.6, 182.8), 3,987 tokens, EOS |
+
+Dropping the guards makes the M3 Ultra about 2.5% faster than on the PR head (170.4 / 160.4). Against SGLang (141.0 / 134.9) that is 1.24x (M3 base),
+1.22x (M3 Gundam) and 1.40x (M5 Gundam); against HF eager (35.4 / 29.1) 4.9x to 6.5x.
+* **Quality sweep, pages 3-6, base and Gundam, both Macs** (`sweep_*`, `verdicts.json`, cap 1,500 tokens per page): Gundam passes every check at every
+  page count on both Macs, with content identical across the two chips (only bbox digits differ) and byte-identical to the earlier guarded runs. Base fails the
+  page-3 sentence from 4 pages on, as on the native engines. **On the M5 Max base mode at 4 and 6 pages hits the cap again** (the loop the guards used to stop);
+  the M3 Ultra base outputs do not loop and are byte-identical to the guarded runs.
+* **15 pages, M3 Ultra** (`p15_m3ultra`): base 14,400 tokens in 84.1 s, EOS, 15 pages, fails only the page-3 sentence; Gundam 13,664 tokens in 85.1 s (160.5 tok/s),
+  all checks pass. GB10 SGLang Gundam, whole document in one window: 104.4 s.
+* **Fidelity** (native HF Gundam tokens through MLX main, M3 Ultra): unchanged, 98.84% overall, 99.83% on text tokens, largest text gap 2.25 logits.
+* **Concurrency** (`concurrency/`, separate processes, Gundam, 6 pages, no guards): M3 Ultra 161.6 / 253.9 / 324.6 / 333.9 / 329.2 tok/s at 1 / 2 / 4 / 8 / 16 (all
+  31 workers succeeded). M5 Max, two runs: 196 / 253 / 232 / 205 and 202 / 294 / 293 / 196 (mean 199 / 273 / 262 / 200). One of the 8 workers in the second run failed with
+  `Insufficient Memory (kIOGPUCommandBufferCallbackErrorOutOfMemory)` at prefill: eight Gundam processes (about 10 GB each) exhaust GPU memory on the 128 GB laptop, which
+  explains the drop at 8. SGLang: 135 / 474 / 550 / 659 at 1 / 4 / 8 / 16.
+
+**Correction to an earlier claim.** I said the proposed guards "never fire on healthy output". That held for the 3- to 6-page text runs I compared byte for byte, but
+not for a long document with tables: in the 15-page Gundam run the n-gram rule changed page 10 (a results table; `^{\text{Edit}}` instead of `^{Edit}`, 13,759 vs 13,664 tokens)
+and the unguarded output is closer to the PDF text on that page (0.814 vs 0.802). That is consistent with main not enabling them by default.

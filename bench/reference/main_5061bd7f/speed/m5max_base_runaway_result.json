@@ -1,0 +1,27 @@
+{
+  "device": "mps/metal (mlx)",
+  "gpu": "Apple M5 Max",
+  "mlx": "0.32.4",
+  "mlx_vlm": "0.7.11",
+  "dtype": "bfloat16",
+  "mode": "base",
+  "pages": 6,
+  "load_s": 0.5,
+  "memory_gb": 128,
+  "platform": "macOS-27.2-arm64-arm-64bit",
+  "runs": [
+    {
+      "run": 0,
+      "seconds": 122.33,
+      "output_tokens": 24576,
+      "tok_per_s": 200.9,
+      "peak_mem_gb": 8.95,
+      "prompt_tokens": 1649,
+      "prefill_s": 0.522,
+      "decode_tps": 201.76,
+      "finish_reason": "length"
+    }
+  ],
+  "mlx_vlm_source": "main @ 5061bd7f (Blaizzy/mlx-vlm, PR #2601 merged)",
+  "protocol": "bench/bench_mlx.py, 6 JPEG pages, greedy, bf16, cropping passed explicitly; no generation guards on main"
+}

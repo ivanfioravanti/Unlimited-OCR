@@ -1,0 +1,43 @@
+{
+ "mlx": "0.32.4",
+ "mlx_vlm": "0.7.11",
+ "platform": "macOS-27.2-arm64-arm-64bit",
+ "rows": [
+  {
+   "chip": "Apple M3 Ultra",
+   "mode": "base",
+   "pages": 15,
+   "prompt_tokens": 4115,
+   "output_tokens": 14400,
+   "finish": "stop",
+   "ttft_s": 1.79,
+   "total_s": 84.12,
+   "tok_per_s": 171.2,
+   "decode_tps": 174.9,
+   "quartile_ms_per_token": [
+    5.72,
+    5.74,
+    5.69,
+    5.72
+   ]
+  },
+  {
+   "chip": "Apple M3 Ultra",
+   "mode": "gundam",
+   "pages": 15,
+   "prompt_tokens": 13565,
+   "output_tokens": 13664,
+   "finish": "stop",
+   "ttft_s": 4.97,
+   "total_s": 85.11,
+   "tok_per_s": 160.5,
+   "decode_tps": 170.5,
+   "quartile_ms_per_token": [
+    5.72,
+    5.77,
+    5.97,
+    6.0
+   ]
+  }
+ ]
+}

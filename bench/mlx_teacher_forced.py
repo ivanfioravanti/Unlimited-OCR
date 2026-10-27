@@ -45,8 +45,8 @@ def force(tokens, logits):
 
 t0 = time.perf_counter()
 for _ in stream_generate(model, processor, prompt, image=files, max_tokens=len(ref), temperature=0.0,
-                         page_count_guard=False, no_repeat_ngram_size=0, logits_processors=[force],
-                         **({"cropping": True} if a.cropping else {})):
+                         logits_processors=[force], cropping=a.cropping,
+                         **({"page_count_guard": False, "no_repeat_ngram_size": 0} if hasattr(model, "make_generation_guards") else {})):
     pass
 bad = [r for r in rec if r[1] != r[2]]
 bb = [r for r in bad if in_bbox[r[0]]]
