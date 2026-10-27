@@ -53,6 +53,26 @@ Try the README's SGLang path (`wheel/sglang-0.5.20.dev10...whl`, CUDA graphs, `-
 same metrics. Note the README client adds the no-repeat n-gram logit processor, which the HF and MLX runs do not use; run with and without
 it and say which. If the wheel does not install on aarch64 / sm_121, report the exact error.
 
+## F. Ground truth and a page-count sweep (added after the first version of this brief)
+The PDF has a text layer, so each output can be scored against the real text instead of only against another engine:
+`python bench/score_vs_pdf.py <raw files>` (per-page similarity; pages 4 and 6 are equation pages and score low for everyone).
+6-page request, pages 1-6:
+* GB10 reference (HF, yours): 0.926 1.000 0.998 0.979 0.925 0.898
+* M3 Ultra, mlx-vlm:         0.923 1.000 0.998 0.982 0.925 0.902  -> the MLX port is as accurate as your reference (<= 0.004 apart).
+* Weak spot, page 3, first body sentence. The PDF says "Document parsing **has undergone** a major paradigm shift". Your reference wrote
+  "is having undergone", the M3 Ultra "recessions have undergone". In a 3-page request both Macs get page 3 exactly right (1.000).
+
+Apple M5 Max, same code / weights / JPEGs, deterministic run to run: 3 pages OK; **4 pages runaway** (hit the 16,384-token cap, 3 `<PAGE>`
+only, loops "The document is a key to the development of the document." starting in page 3); 5 pages OK (3846 tokens, same as M3 Ultra);
+**6 pages runaway** (24,576-token cap, same loop). M3 Ultra was fine at 3, 5 and 6 pages on these JPEGs (4 pages was fine in an earlier
+PNG run, not on the JPEGs). So it is not a simple length threshold: the model looks fragile at the start of that page-3 paragraph and
+small numeric differences can tip it into a loop.
+
+Task: run your CUDA path (and SGLang if it works) for **3, 4, 5 and 6 pages** (`--pages N`), 1 run each, greedy. Per run record: output
+tokens, whether it ended on EOS or hit the cap, `<PAGE>` count (must equal N), `score_vs_pdf.py` per page, and the page-3 first
+sentence verbatim. Questions: does the GB10 path ever loop? Does it glitch the same sentence at 4 and 5 pages? Is the glitch more
+frequent with more pages? Put the table in `bench/reference/gb10_page_sweep.md`.
+
 ## Rules
 * Same inputs, base mode, greedy, bf16. Quote tok/s together with the output token count (outputs differ in length, so compare rates not seconds).
 * Say what each timer includes. Report negative results too.
